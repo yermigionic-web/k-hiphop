@@ -111,3 +111,6 @@
   .stories-section{padding-top:13px;padding-bottom:10px}
 }
 @media (prefers-reduced-motion:reduce){.landing:after{animation:none!important}.carousel-track{transition:none!important}}
+
+/* Untimed lyrics: preserve readable full verses instead of inventing synchronization. */
+.lyrics-lines.is-unsynced{gap:10px}.lyrics-lines.is-unsynced .lyric-line{color:#f6f5f8e0;transform:none;font-size:clamp(20px,5.5vw,29px);line-height:1.48}.lyrics-lines.is-unsynced .lyric-line.is-break{height:18px;min-height:18px;font-size:0}
