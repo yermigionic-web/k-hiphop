@@ -72,6 +72,7 @@
   function render() {
     const r = route();
     document.title = r.page === 'artist' ? `${getArtist(r.id).name} — Karylgram Music` : (r.page === 'instagram' ? 'Karylgram · K-TRACE 2027' : '국힙은 여친이 필요해♡');
+    document.body.classList.toggle('on-music-page', r.page === 'artist');
     if (r.page === 'landing') app.innerHTML = landingPage();
     if (r.page === 'instagram') app.innerHTML = instagramPage();
     if (r.page === 'artist') app.innerHTML = artistPage(getArtist(r.id));
@@ -85,8 +86,8 @@
     // 메인 로고는 이미 저장소 assets/logo/에 존재하므로 참조합니다.
     return `<main class="landing view-enter">
       <span class="landing-corner corner-a"></span><span class="landing-corner corner-b"></span>
-      <div class="landing-topline"><span><span class="live-pip"></span>SEOUL HIP-HOP ARCHIVE</span><span>EST. 2027</span></div>
-      <div class="landing-inner"><div class="landing-eyebrow">THE SCENE IS CALLING</div>
+      <div class="landing-topline"><span>EST. 2027</span></div>
+      <div class="landing-inner"><div class="landing-eyebrow">지금 래퍼 여친 구함!</div>
         <img class="brand-logo" src="assets/logo/k-hiphop_main_logo.png" alt="국힙은 여친이 필요해♡ 메인 로고" />
         <div class="brand-logo-fallback">국힙은<br /><span>여친이</span><br />필요해♡</div>
         <div class="landing-sub">7 ARTISTS · 1 CITY · MANY BAD DECISIONS</div>
@@ -94,7 +95,7 @@
           <span class="enter-glyph">${ico('alien',49)}</span><span class="enter-label">TAP TO ENTER ↗</span>
         </button>
       </div>
-      <div class="landing-bottom"><div><strong>NOT YOUR AVERAGE LOVE STORY.</strong>K-TRACE 2027 · OCT 20</div><div>01 / 03</div></div>
+      <div class="landing-bottom"><div><strong>NOT YOUR AVERAGE LOVE STORY</strong>K-TRACE 2027 · OCT 20</div></div>
     </main>`;
   }
 
@@ -102,12 +103,13 @@
   function instagramPage() {
     return `<div class="app-background"><aside class="desktop-watermark">SEOUL / KARYLGRAM / OCT. 2027</aside><aside class="desktop-watermark right">AN INDEPENDENT MUSIC EXPERIENCE</aside>
       <main class="site-shell view-enter">${header()}
+        ${storiesSection()}
         <section class="ig-announce"><div class="ig-account"><div class="official-avatar">KT</div><div><div class="ig-username">ktrace_official <span class="verify">${ico('verified',14)}</span></div><div class="ig-location">K-TRACE 2027 · Seoul, Korea</div></div></div><button class="post-menu" aria-label="피드 옵션" data-action="post-info">•••</button></section>
-        <section class="post-card"><div class="post-media" id="post-media">${slideHtml(slideIndex)}</div>
+        <section class="post-card"><div class="post-media" id="post-media" aria-label="K-TRACE 2027 공식 피드 이미지 9장">${feedCarouselHtml()}</div>
           <nav class="feed-actions"><div class="left"><button data-action="like" aria-label="좋아요">${ico('heart',26,like)}</button><button data-action="focus-caption" aria-label="소개글 보기">${ico('at',26)}</button><button data-action="share" aria-label="공유">${ico('share',26)}</button></div><button data-action="save" aria-label="저장">${ico('save',26,saved)}</button></nav>
           <div class="carousel-dots" id="carousel-dots">${dotsHtml()}</div><div class="feed-meta"><div class="like-count" id="like-count">${like ? '좋아요 24,828개' : '좋아요 24,827개'}</div><div class="caption-heading"><span class="at">ktrace_official</span> K-TRACE 2027. THE LINEUP IS HERE. 💗</div>
           <div class="caption-copy" id="caption">${captionHtml()}</div><div class="caption-footer">2027년 9월 12일 · 서울 · 댓글은 현재 비활성화되어 있습니다.</div></div>
-        </section><div class="section-divider"></div>${storiesSection()}
+        </section>
         <footer class="ig-footer"><div class="footer-wordmark">KARYLGRAM · K-TRACE</div><div class="footer-text">A FICTIONAL SEOUL HIP-HOP UNIVERSE</div></footer>
       </main></div>`;
   }
@@ -128,38 +130,89 @@
       <p class="hashtag">#KTRACE2027 #KTRACE #한국힙합 #서울힙합 #Karylgram #LineupDrop</p>`;
   }
 
-  const tagPositions = [null,{left:'9%',top:'21%'},{right:'8%',top:'28%'},{left:'7%',bottom:'20%'},{right:'8%',bottom:'21%'},{left:'12%',top:'40%'},{right:'10%',top:'19%'},{left:'8%',bottom:'31%'},{right:'13%',top:'67%'}];
+  const tagPositions = [null,{left:'9%',top:'21%'},{right:'8%',top:'28%'},{right:'8%',top:'23%'},{right:'8%',bottom:'21%'},{left:'12%',top:'40%'},{right:'10%',top:'19%'},{left:'8%',bottom:'31%'},{right:'13%',top:'67%'}];
   function positionStyle(n) { const p=tagPositions[n]; return p ? Object.entries(p).map(([k,v])=>`${k}:${v}`).join(';') : ''; }
   function slideHtml(n) {
-    const count = `<span class="slide-count">${n+1} / 9</span>`;
-    const arrows = `<button class="carousel-hit carousel-prev" data-action="slide-prev" aria-label="이전 피드">${ico('chevronLeft',25)}</button><button class="carousel-hit carousel-next" data-action="slide-next" aria-label="다음 피드">${ico('chevronRight',25)}</button>`;
-    if (n === 0) return `<div class="poster-slide">${imageLayer(DATA.event.posterImage,'K-TRACE 2027 포스터',true)}<div class="slide-grid"></div><div class="poster-inner"><div class="poster-kicker">THE NEW WAVE OF KOREAN HIP-HOP</div><div class="poster-headline">K-<br /><span>TRACE</span><br />2027</div><div class="poster-info"><span>LINEUP REVEALED<br />SEOUL / LIVE + COMPILATION</span><b>10.20</b></div></div></div>${count}${arrows}`;
-    if (n === 8) return `<div class="secret-slide">${imageLayer(DATA.event.secretImage,'비밀 출연진 포스터')}<div class="slide-grid"></div><div class="secret-mark">?</div><div class="secret-title">SECRET ARTIST</div><div class="secret-sub">THE FINAL NAME IS STILL UNDISCLOSED</div><button class="tagged-handle" style="right:10%;bottom:17%" data-action="secret" aria-label="비밀 아티스트 티저">${ico('at',15)}user?</button></div>${count}${arrows}`;
+    // Each slide only renders its own artwork; the shared viewport controls stay still.
+    if (n === 0) return `<div class="poster-slide">${imageLayer(DATA.event.posterImage,'K-TRACE 2027 포스터',true)}<div class="slide-grid"></div><div class="poster-inner"><div class="poster-kicker">THE NEW WAVE OF KOREAN HIP-HOP</div><div class="poster-headline">K-<br /><span>TRACE</span><br />2027</div><div class="poster-info"><span>LINEUP REVEALED<br />SEOUL / LIVE + COMPILATION</span><b>10.20</b></div></div></div>`;
+    if (n === 8) return `<div class="secret-slide">${imageLayer(DATA.event.secretImage,'비밀 출연진 포스터')}<div class="slide-grid"></div><div class="secret-mark">?</div><div class="secret-title">SECRET ARTIST</div><div class="secret-sub">THE FINAL NAME IS STILL UNDISCLOSED</div><button class="tagged-handle" style="right:10%;bottom:17%" data-action="secret" aria-label="비밀 아티스트 티저">${ico('at',15)}user?</button></div>`;
     const a = artists[n-1];
-    return `<div class="artist-slide" style="${cssColor(a)}">${imageLayer(a.feedImage,`${a.name} K-TRACE 소개 사진`)}<div class="slide-grid"></div><span class="slide-number">K-TRACE / 0${n}</span><div class="slide-fallback"><div class="slide-genre">${esc(a.genre)}</div><div class="slide-stage-name">${esc(a.name)}</div><div class="slide-line">${esc(a.tagline)}</div></div><a href="${links(a)}" style="${positionStyle(n)}" class="tagged-handle">${ico('at',15)}${esc(a.handle)}</a></div>${count}${arrows}`;
+    return `<div class="artist-slide" style="${cssColor(a)}">${imageLayer(a.feedImage,`${a.name} K-TRACE 소개 사진`)}<div class="slide-grid"></div><span class="slide-number">K-TRACE / 0${n}</span><div class="slide-fallback"><div class="slide-genre">${esc(a.genre)}</div><div class="slide-stage-name">${esc(a.name)}</div><div class="slide-line">${esc(a.tagline)}</div></div><a href="${links(a)}" style="${positionStyle(n)}" class="tagged-handle">${ico('at',15)}${esc(a.handle)}</a></div>`;
+  }
+  function feedCarouselHtml() {
+    const panels = Array.from({length:9},(_,n)=>`<div class="carousel-panel" data-carousel-index="${n}" aria-hidden="${n!==slideIndex}" ${n!==slideIndex?'inert':''}>${slideHtml(n)}</div>`).join('');
+    return `<div class="carousel-track" id="carousel-track" style="transform:translate3d(-${slideIndex*100}%,0,0)">${panels}</div>
+       <span class="slide-count" id="slide-count" aria-live="polite">${slideIndex+1} / 9</span>
+       <button class="carousel-hit carousel-prev" data-action="slide-prev" aria-label="이전 피드" ${slideIndex===0?'disabled':''}>${ico('chevronLeft',25)}</button>
+       <button class="carousel-hit carousel-next" data-action="slide-next" aria-label="다음 피드" ${slideIndex===8?'disabled':''}>${ico('chevronRight',25)}</button>`;
   }
   function dotsHtml() {return Array.from({length:9},(_,i)=>`<button type="button" data-action="dot" data-index="${i}" aria-label="피드 ${i+1}번" class="${i===slideIndex?'selected':''}"></button>`).join('');}
-  function updateCarousel(index) { slideIndex=(index+9)%9;const media=document.querySelector('#post-media');if(!media)return;media.innerHTML=slideHtml(slideIndex);document.querySelector('#carousel-dots').innerHTML=dotsHtml();handleMissingImages(media); }
+  function slideTransform(extraPx = 0, dragging = false) {
+    const track=document.querySelector('#carousel-track');if(!track)return;
+    track.classList.toggle('is-dragging',dragging);
+    track.style.transform=`translate3d(calc(-${slideIndex*100}% + ${extraPx}px),0,0)`;
+  }
+  function updateCarousel(index) {
+    slideIndex=Math.max(0,Math.min(8,index));
+    slideTransform(0,false);
+    const dots=document.querySelector('#carousel-dots');if(dots)dots.innerHTML=dotsHtml();
+    const count=document.querySelector('#slide-count');if(count)count.textContent=`${slideIndex+1} / 9`;
+    const previous=document.querySelector('.carousel-prev'),next=document.querySelector('.carousel-next');
+    if(previous)previous.disabled=slideIndex===0;
+    if(next)next.disabled=slideIndex===8;
+    document.querySelectorAll('.carousel-panel').forEach((panel,n)=>{
+      const visible=n===slideIndex;
+      panel.setAttribute('aria-hidden',String(!visible));
+      panel.inert=!visible;
+    });
+  }
   function bindSwipe() {
     const media=document.querySelector('#post-media');if(!media)return;
-    let startX=null,startY=null;
-    media.addEventListener('touchstart',e=>{if(e.touches.length!==1)return;startX=e.touches[0].clientX;startY=e.touches[0].clientY;},{passive:true});
-    media.addEventListener('touchend',e=>{if(startX===null)return;const dx=e.changedTouches[0].clientX-startX;const dy=e.changedTouches[0].clientY-startY;if(Math.abs(dx)>48&&Math.abs(dx)>Math.abs(dy)*1.15)updateCarousel(slideIndex+(dx<0?1:-1));startX=null;},{passive:true});
-    let mouseX=null;media.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse')mouseX=e.clientX;});media.addEventListener('pointerup',e=>{if(mouseX===null)return;const dx=e.clientX-mouseX;if(Math.abs(dx)>65)updateCarousel(slideIndex+(dx<0?1:-1));mouseX=null;});
+    let gesture=null, blockClick=false;
+    media.addEventListener('pointerdown',e=>{
+      if(!e.isPrimary||e.button!==0||e.target.closest('a,button'))return;
+      gesture={id:e.pointerId,x:e.clientX,y:e.clientY,t:performance.now(),dragging:false};
+    });
+    media.addEventListener('pointermove',e=>{
+      if(!gesture||gesture.id!==e.pointerId)return;
+      const dx=e.clientX-gesture.x,dy=e.clientY-gesture.y;
+      if(!gesture.dragging){
+        if(Math.abs(dy)>12&&Math.abs(dy)>Math.abs(dx)){gesture=null;return;}
+        if(Math.abs(dx)<9||Math.abs(dx)<Math.abs(dy)*1.2)return;
+        gesture.dragging=true;
+        media.setPointerCapture?.(e.pointerId);
+      }
+      // Small elastic edge resistance, like a native photo carousel.
+      const edge=(slideIndex===0&&dx>0)||(slideIndex===8&&dx<0);
+      slideTransform(edge?dx*.2:dx,true);
+    });
+    const finish=(e,cancelled=false)=>{
+      if(!gesture||gesture.id!==e.pointerId)return;
+      const g=gesture;gesture=null;
+      if(!g.dragging)return;
+      const dx=e.clientX-g.x, elapsed=Math.max(1,performance.now()-g.t);
+      const advance=!cancelled&&(Math.abs(dx)>media.clientWidth*.18||(Math.abs(dx)>27&&Math.abs(dx)/elapsed>.5));
+      if(advance)updateCarousel(slideIndex+(dx<0?1:-1));else slideTransform(0,false);
+      blockClick=true;
+      setTimeout(()=>{blockClick=false;},120);
+    };
+    media.addEventListener('pointerup',e=>finish(e));
+    media.addEventListener('pointercancel',e=>finish(e,true));
+    media.addEventListener('lostpointercapture',e=>{if(gesture?.id===e.pointerId)finish(e,true);});
+    media.addEventListener('click',e=>{if(blockClick){e.preventDefault();e.stopPropagation();blockClick=false;}},true);
   }
 
   function storiesSection() {
     const rows=artists.filter(a=>a.stories>0).map(a=>`<button class="story-item" type="button" data-action="story-open" data-artist="${a.id}" aria-label="${esc(a.name)} 스토리 ${a.stories}개 보기"><span class="story-ring" style="${cssColor(a)}"><span class="story-photo">${img(a.avatarImage,`${a.name} 프로필`,true)}${esc(a.name.slice(0,2).toUpperCase())}</span></span><span class="story-name">${esc(a.name)}</span></button>`).join('');
-    return `<section class="stories-section"><div class="section-top"><span class="section-title">Stories <span style="color:var(--pink)">●</span></span><small>BEHIND THE SCENE</small></div><div class="story-row">${rows}</div><p class="story-note">작은 동그라미 뒤의 조금 더 솔직한 밤. · Young ERROR는 업로드 없음.</p></section>`;
+    return `<section class="stories-section" aria-label="아티스트 스토리"><div class="story-row">${rows}</div></section>`;
   }
 
   function trackWithDefaults(t) {return { ...t, album: t.album || '앨범 정보 추가 예정', year:t.year || '—', cover:t.cover || null, lyrics:t.lyrics || [] };}
   function artistPage(a) {
     const tracks=a.tracks.map((raw,i)=>{const t=trackWithDefaults(raw);const disabled=!t.file;const playing=current?.artistId===a.id&&current.trackIndex===i;return `<button type="button" class="song-row ${playing?'is-playing':''}" data-action="play-track" data-artist="${a.id}" data-track="${i}" ${disabled?'disabled':''} aria-label="${disabled?'발매 예정':`${esc(a.name)} ${esc(t.title)} 재생`}"><div class="song-cover" style="--artist-tone:${a.tone};--artist-ink:${a.ink}">${imageLayer(t.cover,`${t.title} 앨범 커버`)}<span class="cover-letter">${i+1}</span></div><div class="song-copy"><div class="song-title">${esc(t.title)}</div><div class="song-meta">${t.explicit?'<span class="explicit" title="Explicit">E</span>':''}${disabled?'미공개 트랙':`${esc(t.album)} · ${esc(t.year)}`}</div></div><div class="track-trail">${disabled?'<span class="placeholder-song">추가 예정</span>':playing?ico('volume',20):ico('play',19)}</div></button>`;}).join('');
     const similar=a.similar.map(s=>`<a class="similar-card" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=${encodeURIComponent(s+' official music')}" aria-label="YouTube에서 ${esc(s)} 음악 보기"><div class="similar-art"><b>${esc(s)}</b></div><div class="similar-title">${esc(s)}</div><div class="similar-sub">YouTube에서 보기 ${ico('arrowUpRight',12)}</div></a>`).join('');
-    return `<div class="app-background"><aside class="desktop-watermark">APPLE MUSIC · ARTIST FILE</aside><aside class="desktop-watermark right">K-TRACE 2027 / ${esc(a.name)}</aside><main class="site-shell artist-page view-enter" style="--artist-tone:${a.tone};--artist-ink:${a.ink}">
-      <nav class="artist-back"><a href="#/karylgram" aria-label="Karylgram 피드로 돌아가기">${ico('chevronLeft',25)} Karylgram</a><span class="artist-back-label">ARTIST</span><button class="icon-button" data-action="share" style="color:white" aria-label="공유">${ico('share',21)}</button></nav>
-      <section class="artist-hero">${imageLayer(a.artistImage,`${a.name} 아티스트 프로필 촬영 이미지`,true)}<div class="hero-panel"><div class="hero-eyebrow">K-TRACE 2027 / FEATURED ARTIST</div><h1 class="hero-name">${esc(a.name)}</h1><div class="hero-sub">${esc(a.tagline)}<br />${esc(a.genre)}</div></div></section>
+    return `<div class="app-background music-background"><main class="site-shell artist-page view-enter" style="--artist-tone:${a.tone};--artist-ink:${a.ink}">
+      <section class="artist-hero">${imageLayer(a.artistImage,`${a.name} 아티스트 프로필 촬영 이미지`,true)}<a class="artist-return" href="#/karylgram" aria-label="Karylgram 피드로 돌아가기">${ico('chevronLeft',26)}</a><div class="hero-panel"><h1 class="hero-name">${esc(a.name)}</h1></div></section>
       <section class="artist-data"><div class="artist-data-top"><div class="apple-mark">${ico('music',21)}</div><div><strong>${esc(a.name)} <span style="color:#a2a0aa;font-weight:600">· ${esc(a.korean)}</span></strong><small>${esc(a.label)}</small></div></div><p class="artist-bio">서울의 같은 밤, 서로 다른 소리. K-TRACE의 무대에서 ${esc(a.name)}의 음악을 만나보세요. 아래에서 인기곡을 직접 감상할 수 있습니다.</p></section>
       <section><div class="music-heading"><h2>인기곡</h2><small>TOP SONGS · 03</small></div><div class="song-list">${tracks}</div></section><div class="section-divider" style="margin-top:25px"></div>
       <section class="similar-section"><div class="music-heading" style="padding:7px 0 19px"><h2>유사한 아티스트</h2>${ico('chevronRight',20)}</div><div class="similar-grid">${similar}</div></section>

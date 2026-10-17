@@ -36,3 +36,78 @@
 .secret-slide .visual-asset.has-image ~ .secret-mark,
 .secret-slide .visual-asset.has-image ~ .secret-title,
 .secret-slide .visual-asset.has-image ~ .secret-sub{display:none}
+
+/* === 2027 experience refinement: restrained motion, native-feeling feed, dark music === */
+/* Landing orb: quiet ten-second breathing motion instead of a static pink ring. */
+.landing:after{animation:orb-breathe 11s ease-in-out infinite;transform-origin:center center}
+@keyframes orb-breathe{
+  0%,100%{transform:translate(-50%,-50%) rotate(-17deg) scale(.94);opacity:.8}
+  50%{transform:translate(-50%,-50%) rotate(-17deg) scale(1.075);opacity:1}
+}
+.landing-topline{justify-content:flex-end}
+.landing-eyebrow{font-size:clamp(15px,4.1vw,19px);font-weight:850;letter-spacing:-.045em;color:#2d2a32;margin-bottom:17px}
+
+/* Actual full-width photo track: slides glide side-to-side, not crossfade/cut. */
+.carousel-track{height:100%;width:100%;display:flex;will-change:transform;transition:transform 510ms cubic-bezier(.22,.76,.24,1)}
+.carousel-track.is-dragging{transition:none}
+.carousel-panel{position:relative;flex:0 0 100%;width:100%;height:100%;min-width:0;overflow:hidden}
+.carousel-panel[inert]{pointer-events:none}
+.carousel-hit:disabled{opacity:0!important;pointer-events:none}
+.post-media{overscroll-behavior-x:contain;cursor:grab}
+.post-media:active{cursor:grabbing}
+.post-media a,.post-media button{cursor:pointer}
+/* Instagram-style horizontal story rail directly below the title bar. */
+.stories-section{padding:15px 17px 12px;border-bottom:1px solid #f0eff2;background:#fff}
+.story-row{margin-right:-17px;padding-right:17px;padding-bottom:4px;gap:14px}
+.story-item{min-width:67px;max-width:67px}
+.story-ring{width:62px;height:62px}
+.story-name{font-size:10px}
+.ig-announce{padding-top:15px}
+
+/* Apple Music-inspired nocturnal mode: independent of Karylgram's white feed. */
+.app-background.music-background{background:#050506}
+.artist-page{background:#0b0b0d;color:#f7f7f9;box-shadow:0 0 54px #0006}
+.artist-return{position:absolute;z-index:20;top:calc(15px + env(safe-area-inset-top));left:15px;width:44px;height:44px;color:#fff;display:grid;place-items:center;border-radius:50%;filter:drop-shadow(0 1px 4px #000b);transition:transform .2s}
+.artist-return:hover{transform:translateX(-3px)}
+.artist-hero{background:radial-gradient(ellipse at 50% 22%,color-mix(in srgb,var(--artist-tone) 31%,#0a0a0c),#09090b 73%)}
+.artist-hero:before{background:radial-gradient(circle at 50% 28%,#ffffff07,transparent 60%)}
+.artist-hero:after{background:linear-gradient(0deg,#0b0b0d 0%,#0b0b0dcc 13%,#0b0b0d18 54%,#05050738 100%)}
+.hero-panel{left:18px;right:18px;bottom:29px;text-align:center}
+.hero-name{font-size:clamp(46px,11vw,73px);margin:0;line-height:1.05;letter-spacing:-.07em;text-shadow:0 5px 22px #000a}
+.artist-data{padding-top:27px;padding-bottom:11px}
+.artist-data strong{color:#fafafa}
+.artist-data strong span{color:#9998a0!important}
+.artist-data small{color:#929096}
+.artist-bio{color:#a9a6af}
+.artist-page .music-heading h2{color:#f7f7fa}
+.artist-page .music-heading small{color:#96939c}
+.artist-page .song-row{background:transparent;color:#f5f5f8;border-bottom:1px solid #242428;border-radius:8px}
+.artist-page .song-row:hover,.artist-page .song-row:focus-visible{background:#1e1e22}
+.artist-page .song-row:last-child{border-bottom:0}
+.artist-page .song-title{color:#f5f5f8}
+.artist-page .song-meta{color:#9a98a2}
+.artist-page .song-meta .explicit{background:#404046;color:#dddde2}
+.artist-page .song-row.is-playing .song-title{color:#ff5a92}
+.artist-page .track-trail{color:#afacb5}
+.artist-page .placeholder-song{border-color:#3b3b41;color:#a5a1aa}
+.artist-page .song-cover{box-shadow:0 3px 14px #0006}
+.artist-page .similar-section{border-top:1px solid #25252a}
+.artist-page .similar-art{background:#19191d;border-color:#2a2a31;color:#ededf1}
+.artist-page .similar-art:before{border-color:#28282e}
+.artist-page .similar-art:after{background:#ff247e17}
+.artist-page .similar-title{color:#f1f1f5}
+.artist-page .similar-sub{color:#aaa7b0}
+.artist-page .artist-foot{color:#75737d}
+.artist-page .section-divider{background:#16161a;border-top-color:#232327;border-bottom-color:#232327}
+.on-music-page .mini-player{background:#2c2b30e8;border-color:#77717e5c;color:#fafafa;box-shadow:0 12px 38px #000a,0 1px 1px #ffffff25 inset}
+.on-music-page .mini-info{color:#fff}
+.on-music-page .mini-info span{color:#bab7c0}
+.on-music-page .mini-control{color:#fff}
+.on-music-page .mini-player:after{background:#ffffff15}
+
+@media (max-width:560px){
+  .artist-hero{height:70vh;min-height:385px;max-height:580px}
+  .artist-return{top:calc(8px + env(safe-area-inset-top));left:9px}
+  .stories-section{padding-top:13px;padding-bottom:10px}
+}
+@media (prefers-reduced-motion:reduce){.landing:after{animation:none!important}.carousel-track{transition:none!important}}
