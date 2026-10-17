@@ -110,27 +110,27 @@
           <div class="carousel-dots" id="carousel-dots">${dotsHtml()}</div><div class="feed-meta"><div class="like-count" id="like-count">${like ? '좋아요 24,828개' : '좋아요 24,827개'}</div><div class="caption-heading"><span class="at">ktrace_official</span> K-TRACE 2027. THE LINEUP IS HERE. 💗</div>
           <div class="caption-copy" id="caption">${captionHtml()}</div><div class="caption-footer">2027년 9월 12일 · 서울 · 댓글은 현재 비활성화되어 있습니다.</div></div>
         </section>
-        <footer class="ig-footer"><div class="footer-wordmark">KARYLGRAM · K-TRACE</div><div class="footer-text">A FICTIONAL SEOUL HIP-HOP UNIVERSE</div></footer>
+        <footer class="ig-footer"><div class="footer-wordmark">KARYLGRAM · KKU</div><div class="footer-text">KOREAN HIPHOP NEEDS MORE WLW</div></footer>
       </main></div>`;
   }
   function handleLink(a) {return `<a class="handle-link" href="${links(a)}">@${esc(a.handle)}</a>`;}
   function captionHtml() {
     const a = Object.fromEntries(artists.map(x => [x.id,x]));
     return `<p>드디어 공개합니다. 한국 힙합의 지금을 한곳에서 만나는 <b>K-TRACE 2027</b>이 <b>10월 20일</b> 서울에서 열립니다. 작년에도 이 무대를 뜨겁게 만들어준 아티스트들과, 올해 처음 이름을 올리는 새로운 얼굴들까지. 올해 라인업은 조금, 아니 꽤 심각합니다. 🔥</p>
-      <p>무대를 하나의 장르로 묶기보다, 서로 다른 음악을 만드는 사람들이 같은 날 같은 무대 위에 서는 것. K-TRACE가 지키고 싶은 건 바로 그 장면입니다. 공연은 물론 합동 작업과 컴필레이션, 특별 영상 프로젝트도 차례로 공개될 예정입니다.</p>
-      <p>첫 번째 이름, <b>SL00Z</b> ${handleLink(a.sl00z)}. 관객을 설득하는 대신 자신의 소리를 끝까지 밀어붙이는 사람. 숨 막히게 정교한 노이즈와 짙은 저음, 그리고 라이브에서만 완성되는 공기를 올해도 놓치지 마세요.</p>
-      <p>역시나 페스티벌에 빠지지 않는 <b>KAY KAYO</b> ${handleLink(a.kayo)}도 참여합니다. 작년 <b>ODOGWU</b>로 아프로비트 보스의 명맥을 제대로 보여준 그녀. 올해는 어떤 그루브로 바닥을 뒤집어놓을지, 벌써부터 스태프들이 워밍업 중입니다. (진짜로요.)</p>
-      <p>GROUNDWORK의 중심이자 씬의 오래된 기준점 <b>JAE-ONE</b> ${handleLink(a.jaeone)}. 묵직한 붐뱁부터 사람 냄새 나는 이야기까지. 앨범으로 증명해온 시간이 무대 위에서 어떻게 들리는지 직접 확인할 차례입니다.</p>
-      <p>그리고 이름만으로 온도를 올리는 <b>Jane Doe</b> ${handleLink(a.janedoe)}. 싸움 같은 벌스와 조금도 물러서지 않는 에너지. 사운드체크부터 이미 앞줄이 걱정되는 라인업이라는 사실만 전해드립니다.</p>
-      <p>지금 가장 선명한 자기 팬덤을 가진 <b>Lil Soda</b> ${handleLink(a.soda)}도 합류합니다. 상처 입은 멜로디와 거친 기타, 너무 개인적이라 오히려 모두가 따라 부르는 노래들. 이번 무대는 이어폰 밖에서 만나주세요.</p>
-      <p>음악과 연기, 두 개의 무대에서 모두 자기 이름을 만든 <b>NAFI</b> ${handleLink(a.nafi)}. 방송 화면에 담기지 않는 라이브의 결, 조금 더 솔직한 목소리를 준비하고 있습니다. 그날 카메라보다 먼저 귀를 열어주세요.</p>
-      <p>그리고 새로운 파형. FILEBREEDS의 <b>Young ERROR</b> ${handleLink(a.error)}. 누군가에겐 아직 낯선 사운드, 누군가에겐 이미 미래인 그 소리. 설명은 짧게 할게요. 현장에서 들으면 압니다. 아마 본인은 “왜요?”라고 하겠지만요.</p>
-      <p>마지막 <b>SECRET</b> 슬롯은 아직 공개할 수 없습니다. 힌트는 하나, <b>@user?</b>. 정체는 행사 당일에 확인해 주세요. 이미 알고 있는 사람도, 처음 마주칠 이름도 있을 겁니다.</p>
-      <p>📍 <b>SEOUL</b>　 📅 <b>2027.10.20</b><br />추가 일정·입장 안내·컴필레이션 공개 소식은 이 계정에서 이어집니다. 오래 기다린 만큼, 제대로 만나겠습니다.</p>
+      <p>하나의 장르로 묶이지 않는 27시즌 힙합 씬, 서로 다른 음악을 만드는 사람들을 같은 날 같은 무대에서 맛보고 가시는 것이 K-TRACE의 목적이어 왔죠. 공연은 물론 합동 작업과 컴필레이션, 특별 영상 프로젝트도 근시일 내에 공개될 예정입니다.</p>
+      <p>준비해 주신 래퍼 분들께 Shout-out을 보내며, 라이트한 힙합 팬분들부터 헤비 훌리건 분들에게까지 간략한 소개를 드리겠습니다!</p>
+      <p>영광스러운 첫 번째는 바로 <b>SL00Z</b> ${handleLink(a.sl00z)}. 설득되기 이전에 압도되는, 인더스트리얼 장르의 핵심이죠. 숨 막히게 정교한 노이즈와 짙은 저음, 그리고 라이브에서만 완성되는 공기를 올해도 놓치지 마세요.</p>
+      <p>힙합 페스티벌에 빠지지 않는 이름! <b>KAY KAYO</b> ${handleLink(a.kayo)}도 참여합니다. 작년 <b>ODOGWU</b>로 아프로비트 보스의 Steeze를 제대로 보여준 그녀. 올해는 어떤 그루브로 바닥을 뒤집어놓을지 기대되시지 않나요?</p>
+      <p>현시점 핫한 레이블 하면 빠지지 않는 이름. GROUNDWORK의 중심이자 OG 대표주자 <b>JAE-ONE</b> ${handleLink(a.jaeone)}. 앨범으로 증명해온 레거시가 무대 위에서 어떻게 들리는지 직접 확인할 차례입니다.</p>
+      <p>그리고 이름만으로 온도를 올리는 <b>Jane Doe</b> ${handleLink(a.janedoe)}. 연초부터 수많은 싱글 뱅어로 이름을 들으셨으리라고 믿습니다. 조금도 물러서지 않는 그녀만의 에너지! 사운드체크부터 이미 비프가 걱정되는 라인업이라는 사실만 전해드립니다.</p>
+      <p>지금 가장 선명한 자기 팬덤을 가진 <b>Lil Soda</b> ${handleLink(a.soda)}가 첫 컴필레이션 참여 의사를 밝혀 주셨습니다. 상처 입은 멜로디와 거친 기타, 이번 무대는 톡톡 튀는 적나라함을 이어폰 밖에서 만나주세요.</p>
+      <p>음악과 영화, 같지만 다른 두 무대에서 자신의 네임 밸류를 쌓아올린 <b>NAFI</b> ${handleLink(a.nafi)}. 방송 화면에 담기지 않는 엄청난 실력과 조금 더 솔직한 목소리를 준비하고 있습니다. 다재다능한 힙합 씬의 엔터테이너를 직접 만나보실 기회입니다.</p>
+      <p>27년 들어 제일 떠오르는 크루인 FILEBREEDS의 수장, <b>Young ERROR</b> ${handleLink(a.error)}. 구시대의 EASY MESS를 보는 듯 트렌드를 만들어가는 그녀입니다. 설명은 짧게 할게요. 현장에서 직접 들어 보시면 바로 Mosh Pit이 펼쳐질 테니까요.</p>
+      <p>마지막 <b>SECRET</b> 슬롯의 정체는 행사 당일에 확인해 주세요!</p>
+      <p>📍 <b>SEOUL</b>　 📅 <b>2027.10.20</b><br />추가 일정·입장 안내·컴필레이션 공개 소식은 이 계정에서 이어집니다. 오래 기다린 만큼 더 많은 Banger로 준비해 드리겠습니다 🔥🔥</p>
       <p class="hashtag">#KTRACE2027 #KTRACE #한국힙합 #서울힙합 #Karylgram #LineupDrop</p>`;
   }
-
-  const tagPositions = [null,{left:'9%',top:'21%'},{right:'8%',top:'28%'},{right:'8%',top:'23%'},{right:'8%',bottom:'21%'},{left:'12%',top:'40%'},{right:'10%',top:'19%'},{left:'8%',bottom:'31%'},{right:'13%',top:'67%'}];
+  const tagPositions = [null,{left:'9%',top:'21%'},{right:'8%',top:'28%'},{right:'8%',top:'23%'},{right:'8%',bottom:'21%'},{left:'12%',top:'40%'},{right:'10%',top:'19%'},{left:'9%',top:'21%'},{right:'13%',top:'67%'}];
   function positionStyle(n) { const p=tagPositions[n]; return p ? Object.entries(p).map(([k,v])=>`${k}:${v}`).join(';') : ''; }
   function slideHtml(n) {
     // Each slide only renders its own artwork; the shared viewport controls stay still.
