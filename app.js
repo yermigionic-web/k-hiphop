@@ -213,10 +213,10 @@
     const similar=a.similar.map(s=>`<a class="similar-card" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=${encodeURIComponent(s+' official music')}" aria-label="YouTube에서 ${esc(s)} 음악 보기"><div class="similar-art"><b>${esc(s)}</b></div><div class="similar-title">${esc(s)}</div><div class="similar-sub">YouTube에서 보기 ${ico('arrowUpRight',12)}</div></a>`).join('');
     return `<div class="app-background music-background"><main class="site-shell artist-page view-enter" style="--artist-tone:${a.tone};--artist-ink:${a.ink}">
       <section class="artist-hero">${imageLayer(a.artistImage,`${a.name} 아티스트 프로필 촬영 이미지`,true)}<a class="artist-return" href="#/karylgram" aria-label="Karylgram 피드로 돌아가기">${ico('chevronLeft',26)}</a><div class="hero-panel"><h1 class="hero-name">${esc(a.name)}</h1></div></section>
-      <section class="artist-data"><div class="artist-data-top"><div class="apple-mark">${ico('music',21)}</div><div><strong>${esc(a.name)} <span style="color:#a2a0aa;font-weight:600">· ${esc(a.korean)}</span></strong><small>${esc(a.label)}</small></div></div><p class="artist-bio">서울의 같은 밤, 서로 다른 소리. K-TRACE의 무대에서 ${esc(a.name)}의 음악을 만나보세요. 아래에서 인기곡을 직접 감상할 수 있습니다.</p></section>
+      <section class="artist-data"><div class="artist-data-top"><div class="apple-mark">${ico('music',21)}</div><div><strong>${esc(a.name)} <span style="color:#a2a0aa;font-weight:600">· ${esc(a.korean)}</span></strong><small>${esc(a.label)}</small></div></div><p class="artist-bio">K-TRACE의 무대에서 ${esc(a.name)}의 음악을 만나보기 전, 인기곡을 직접 감상할 수 있습니다.</p></section>
       <section><div class="music-heading"><h2>인기곡</h2><small>TOP SONGS · 03</small></div><div class="song-list">${tracks}</div></section><div class="section-divider" style="margin-top:25px"></div>
       <section class="similar-section"><div class="music-heading" style="padding:7px 0 19px"><h2>유사한 아티스트</h2>${ico('chevronRight',20)}</div><div class="similar-grid">${similar}</div></section>
-      <footer class="artist-foot">KARYLGRAM MUSIC · K-TRACE 2027 · FAN CONCEPT</footer>
+      <footer class="artist-foot">KARYL MUSIC 2027</footer>
     </main></div>`;
   }
 
@@ -269,7 +269,7 @@
        <div class="story-progress">${Array.from({length:a.stories},(_,i)=>`<div class="story-segment ${i===n?'current':''}"><span style="width:${i<n?'100%':'0%'}"></span></div>`).join('')}</div>
        <div class="story-header"><div class="story-avatar">${esc(a.name.slice(0,2).toUpperCase())}</div><div class="story-name-info">${esc(a.handle)} <span>${n+1} / ${a.stories}</span></div><button class="story-close" data-action="story-close" aria-label="스토리 닫기">${ico('close',24)}</button></div>
        <div class="story-center"><div class="story-index">${String(n+1).padStart(2,'0')}</div><div class="story-main-label">${esc(a.name)}</div><div class="story-caption">STORY / ${String(n+1).padStart(2,'0')}</div></div>
-       <button class="story-tap prev" data-action="story-prev" aria-label="이전 스토리"></button><button class="story-tap next" data-action="story-next" aria-label="다음 스토리"></button><div class="story-foot">메시지 보내기 · 소식 보기</div>
+       <button class="story-tap prev" data-action="story-prev" aria-label="이전 스토리"></button><button class="story-tap next" data-action="story-next" aria-label="다음 스토리"></button><div class="story-foot">메세지 보내기</div>
       </section></div>`;document.body.classList.add('modal-open');handleMissingImages(overlayRoot);startStoryTimer();}
 
   function toast(message){document.querySelector('.toast')?.remove();clearTimeout(toastTimer);const el=document.createElement('div');el.className='toast';el.textContent=message;document.body.appendChild(el);toastTimer=setTimeout(()=>el.remove(),3200);}
