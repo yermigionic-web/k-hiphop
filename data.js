@@ -30,7 +30,7 @@ window.KHIPHOP_DATA = {
         { title: '배기', file: 'music/SL00Z/배기 - SL00Z.mp3' },
         { title: '잠수', file: 'music/SL00Z/잠수 - SL00Z.mp3' }
       ],
-      similar: ['Lil Cherry', 'sogumm']
+      similar: [{ name: 'Lil Cherry', url: 'https://youtube.com/@lilcherrybigcherry' }, { name: 'soguum', url: 'https://youtube.com/playlist?list=PLeb2Hd9bOARTyBsQs-0AqCt5VOwarnNmC&si=g3TrJNNNcmpTL3N2' }]
     },
     {
       id: 'kayo', name: 'KAY KAYO', korean: '케이카요', handle: 'afrokkayo',
@@ -46,7 +46,7 @@ window.KHIPHOP_DATA = {
         { title: 'ODOGWU', file: 'music/KAY KAYO/ODOGWU - KAY KAYO.mp3' },
         { title: 'COMING SOON', file: null }
       ],
-      similar: ['PENOMECO', 'Burna Boy']
+      similar: [{ name: 'PENOMECO', url: 'https://www.youtube.com/@PENOMECO' }, { name: 'Burna Boy', url: 'https://www.youtube.com/@BurnaBoy' }]
     },
     {
       id: 'jaeone', name: 'JAE-ONE', korean: '재원', handle: 'groundwork_onejae',
@@ -62,7 +62,7 @@ window.KHIPHOP_DATA = {
         { title: 'BOSS THANG', file: 'music/JAE-ONE/BOSS THANG - JAE-ONE.mp3' },
         { title: 'FOUNDATION', file: 'music/JAE-ONE/FOUNDATION - JAE-ONE.mp3' }
       ],
-      similar: ['E SENS', 'Paloalto']
+      similar: [{ name: 'E SENS', url: 'https://www.youtube.com/@esensofficial0209' }, { name: 'Paloalto', url: 'https://www.youtube.com/@paloaltongue' }]
     },
     {
       id: 'janedoe', name: 'Jane Doe', korean: '제인 도', handle: 'notjanedoe',
@@ -78,7 +78,7 @@ window.KHIPHOP_DATA = {
         { title: '개싸움 (Gasoline)', file: 'music/Jane Doe/개싸움 (Gasoline) - Jane Doe.mp3', explicit: true },
         { title: '먹이사슬', file: 'music/Jane Doe/먹이사슬 - Jane Doe.mp3', explicit: true }
       ],
-      similar: ['JUSTHIS', 'NO:EL']
+      similar: [{ name: 'JUSTHIS', url: 'https://www.youtube.com/@THISISJUSTHIS' }, { name: 'NO:EL', url: 'https://www.youtube.com/@noel_officialchannel' }]
     },
     {
       id: 'soda', name: 'Lil Soda', korean: '릴 소다', handle: 'tabaccosuitai',
@@ -94,7 +94,7 @@ window.KHIPHOP_DATA = {
         { title: '푸른봄은썩었어', file: 'music/Lil Soda/푸른봄은썩었어 - Lil Soda.mp3' },
         { title: 'COMING SOON', file: null }
       ],
-      similar: ['YANGHONGWON', 'Ghost Club']
+      similar: [{ name: 'YANGHONGONE', url: 'https://www.youtube.com/channel/UCO4p2LbFEEF1HKm4HnUVjfg' }, { name: 'Scails', url: 'https://www.youtube.com/@xscails' }]
     },
     {
       id: 'nafi', name: 'NAFI', korean: '나피', handle: 'shinnafi',
@@ -110,7 +110,7 @@ window.KHIPHOP_DATA = {
         { title: 'Silk Guillotine', file: 'music/NAFI/Silk Guillotine - NAFI.mp3' },
         { title: 'COMING SOON', file: null }
       ],
-      similar: ['BIBI', 'DEAN']
+      similar: [{ name: 'BIBI', url: 'https://www.youtube.com/@naked_BIBI' }, { name: 'DEAN', url: 'https://www.youtube.com/@DEANTRBL' }]
     },
     {
       id: 'error', name: 'Young ERROR', korean: '영에러', handle: 'youngcitybanger',
@@ -126,7 +126,7 @@ window.KHIPHOP_DATA = {
         { title: 'Cred Pass!', file: 'music/Young ERROR/Cred Pass! - Young ERROR.mp3' },
         { title: 'FACE ID', file: 'music/Young ERROR/FACE ID - Young ERROR.mp3' }
       ],
-      similar: ['NOWIMYOUNG', 'OKASHII']
+      similar: [{ name: 'NOWIMYOUNG', url: 'https://www.youtube.com/@nowimyoung' }, { name: 'Effie', url: 'https://www.youtube.com/@effi3e' }]
     }
   ]
 };
