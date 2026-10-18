@@ -1,8 +1,4 @@
-/* KARYL MUSIC — lyrics transcribed verbatim from 가사집.docx, 2026-10-18.
- * No timestamps were supplied: lyrics are displayed as readable, non-synchronized text.
- * Spaces represent blank lines between verses. E marks profanity as requested.
- * Keep this file between data.js and app.js in index.html.
- */
+
 (function () {
   'use strict';
   const artists = window.KHIPHOP_DATA && window.KHIPHOP_DATA.artists;

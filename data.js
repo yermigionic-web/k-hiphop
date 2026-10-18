@@ -1,19 +1,10 @@
-/*
- * KARYLGRAM CONTENT / ASSET REGISTRY
- * -------------------------------------------------------------
- * 이미지 파일은 제공될 때까지 모두 null입니다. 아래 예시 경로에
- * 파일을 GitHub 저장소에 업로드한 후, null을 경로 문자열로 바꾸세요.
- * 예: feedImage: 'assets/characters/sl00z/feed.jpg'
- * 음악은 저장소 music/ 디렉터리의 실재 MP3 파일명과 일치합니다.
- * 발매연도·수록앨범·가사는 검증된 정보가 없어 편집용 자리표시자로 둡니다.
- * -------------------------------------------------------------
- */
+
 window.KHIPHOP_DATA = {
   event: {
     name: 'K-TRACE 2027', date: '2027.10.20',
     instagram: 'ktrace_official',
-    posterImage: 'assets/karylgram/ktrace-poster.png', // K-TRACE 2027 메인 피드 이미지
-    secretImage: 'assets/karylgram/secret-user-poster.png', // SECRET 피드 이미지
+    posterImage: 'assets/karylgram/ktrace-poster.png',
+    secretImage: 'assets/karylgram/secret-user-poster.png',
   },
   artists: [
     {
@@ -21,10 +12,10 @@ window.KHIPHOP_DATA = {
       label: 'NARROWROOM RECORDS', genre: 'INDUSTRIAL / ALTERNATIVE',
       tagline: '인더스트리계 부뚜막 위의 얌전한 고양이', tone: '#a2a8b2', ink: '#24252e',
       stories: 2,
-      feedImage: 'assets/karylgram/sl00z-poster.png', // Karylgram 라인업 공연 이미지
-      avatarImage: 'assets/karylgram/profile/sl00z-profile-picture.png', // Karylgram story avatar
-      artistImage: null, // 'assets/characters/sl00z/artist.jpg' (인스타 프사와 다름)
-      storyImages: ["assets/karylgram/stories/sl00z-stories-01.png","assets/karylgram/stories/sl00z-stories-02.png"], // 'assets/stories/sl00z/01.jpg', 'assets/stories/sl00z/02.jpg'
+      feedImage: 'assets/karylgram/sl00z-poster.png',
+      avatarImage: 'assets/karylgram/profile/sl00z-profile-picture.png',
+      artistImage: null,
+      storyImages: ["assets/karylgram/stories/sl00z-stories-01.png","assets/karylgram/stories/sl00z-stories-02.png"],
       tracks: [
         { title: 'STATIC IN THE JAW', file: 'music/SL00Z/STATIC IN THE JAW - SL00Z.mp3', album: 'ROOM TEMPERATURE' },
         { title: '배기', file: 'music/SL00Z/배기 - SL00Z.mp3', album: '저화질도시 (Prod. Ill Bass)' },
@@ -37,9 +28,9 @@ window.KHIPHOP_DATA = {
       label: 'KAYO WORKS', genre: 'AFRO-FUSION / DANCEHALL',
       tagline: '모두를 움직이게 만드는 아프로비트 최강자', tone: '#cc8b41', ink: '#573b24',
       stories: 1,
-      feedImage: 'assets/karylgram/kaykayo-poster.png', // Karylgram 라인업 공연 이미지
-      avatarImage: 'assets/karylgram/profile/kaykayo-profile-picture.png', // Karylgram story avatar
-      artistImage: null, // 'assets/characters/kayo/artist.jpg'
+      feedImage: 'assets/karylgram/kaykayo-poster.png',
+      avatarImage: 'assets/karylgram/profile/kaykayo-profile-picture.png',
+      artistImage: null,
       storyImages: ["assets/karylgram/stories/kaykayo-stories-01.png"],
       tracks: [
         { title: 'DELLY', file: 'music/KAY KAYO/DELLY - KAY KAYO.mp3', album: 'AFRO-KOREAN' },
@@ -53,9 +44,9 @@ window.KHIPHOP_DATA = {
       label: 'GROUNDWORK', genre: 'BOOM BAP / JAZZ RAP',
       tagline: '시간이 증명한 마이크의 무게.', tone: '#708078', ink: '#303b36',
       stories: 2,
-      feedImage: 'assets/karylgram/jae-one-poster.png', // Karylgram 라인업 공연 이미지
-      avatarImage: 'assets/karylgram/profile/jae-one-profile-picture.png', // Karylgram story avatar
-      artistImage: null, // 'assets/characters/jaeone/artist.jpg'
+      feedImage: 'assets/karylgram/jae-one-poster.png',
+      avatarImage: 'assets/karylgram/profile/jae-one-profile-picture.png',
+      artistImage: null,
       storyImages: ["assets/karylgram/stories/jae-one-stories-01.png","assets/karylgram/stories/jae-one-stories-02.png"],
       tracks: [
         { title: '27신촌', file: 'music/JAE-ONE/27신촌 - JAE-ONE.mp3', album: 'Re.08신촌 - EP' },
@@ -69,9 +60,9 @@ window.KHIPHOP_DATA = {
       label: 'GROUNDWORK', genre: 'RAGE / HARDCORE TRAP',
       tagline: '비프만큼이나 비트도 Clean and 깔끔', tone: '#8b3d47', ink: '#2b1821',
       stories: 9,
-      feedImage: 'assets/karylgram/janedoe_poster.png', // Karylgram 라인업 공연 이미지
-      avatarImage: 'assets/karylgram/profile/janedoe-profile-picture.png', // Karylgram story avatar
-      artistImage: null, // 'assets/characters/janedoe/artist.jpg'
+      feedImage: 'assets/karylgram/janedoe_poster.png',
+      avatarImage: 'assets/karylgram/profile/janedoe-profile-picture.png',
+      artistImage: null,
       storyImages: ["assets/karylgram/stories/janedoe-stories-01.png","assets/karylgram/stories/janedoe-stories-02.png","assets/karylgram/stories/janedoe-stories-03.png",null,"assets/karylgram/stories/janedoe-stories-05.png","assets/karylgram/stories/janedoe-stories-06.png","assets/karylgram/stories/janedoe-stories-07.png","assets/karylgram/stories/janedoe-stories-08.png","assets/karylgram/stories/janedoe-stories-09.png"],
       tracks: [
         { title: 'FUCK UR CO-SIGN', file: 'music/Jane Doe/FUCK UR CO-SIGN - Jane Doe.mp3', explicit: true, album: 'FUCK UR CO-SIGN - Single' },
@@ -85,9 +76,9 @@ window.KHIPHOP_DATA = {
       label: 'NARROWROOM RECORDS', genre: 'EMO RAP / SHOEGAZE TRAP',
       tagline: '국힙 EMO 숭배자들의 종착지', tone: '#d56594', ink: '#49263d',
       stories: 5,
-      feedImage: 'assets/karylgram/lilsoda_poster.png', // Karylgram 라인업 공연 이미지
-      avatarImage: 'assets/karylgram/profile/lilsoda-profile-picture.png', // Karylgram story avatar
-      artistImage: null, // 'assets/characters/soda/artist.jpg'
+      feedImage: 'assets/karylgram/lilsoda_poster.png',
+      avatarImage: 'assets/karylgram/profile/lilsoda-profile-picture.png',
+      artistImage: null,
       storyImages: ["assets/karylgram/stories/lilsoda-stories-01.png","assets/karylgram/stories/lilsoda-stories-02.png","assets/karylgram/stories/lilsoda-stories-03.png","assets/karylgram/stories/lilsoda-stories-04.png","assets/karylgram/stories/lilsoda-stories-05.png"],
       tracks: [
         { title: '수면제', file: 'music/Lil Soda/수면제 - Lil Soda.mp3', album: '수면제 - Single' },
@@ -101,10 +92,10 @@ window.KHIPHOP_DATA = {
       label: 'LAYER NINE ENTERTAINMENT / NAFI OFFICE', genre: 'ALTERNATIVE R&B / POP RAP',
       tagline: 'NAFI로도, 나희로도 빛나는 얼굴', tone: '#b09c88', ink: '#55483d',
       stories: 3,
-      feedImage: 'assets/karylgram/nafi-poster.png', // Karylgram 라인업 공연 이미지
-      avatarImage: 'assets/karylgram/profile/nafi-profile-picture.png', // Karylgram story avatar
-      artistImage: null, // 'assets/characters/nafi/artist.jpg'
-      storyImages: [null,null,null],
+      feedImage: 'assets/karylgram/nafi-poster.png',
+      avatarImage: 'assets/karylgram/profile/nafi-profile-picture.png',
+      artistImage: null,
+      storyImages: ["assets/karylgram/stories/nafi-stories-01.png","assets/karylgram/stories/nafi-stories-02.png","assets/karylgram/stories/nafi-stories-03.png"],
       tracks: [
         { title: 'I am Technology', file: 'music/NAFI/I am Technology - NAFI.mp3', album: 'IT-F-TAX' },
         { title: 'Silk Guillotine', file: 'music/NAFI/Silk Guillotine - NAFI.mp3', album: 'FACETIME' },
@@ -117,9 +108,9 @@ window.KHIPHOP_DATA = {
       label: 'FILEBREEDS', genre: 'DIGICORE / NEO-RAGE',
       tagline: '뭘 고쳐 그냥 좋은데 ㅋㅋ Yarr', tone: '#809abd', ink: '#212e40',
       stories: 0,
-      feedImage: 'assets/karylgram/youngerror-poster.png', // Karylgram 라인업 공연 이미지
-      avatarImage: 'assets/karylgram/profile/youngerror-profile-picture.png', // Karylgram story avatar
-      artistImage: null, // 'assets/characters/error/artist.jpg'
+      feedImage: 'assets/karylgram/youngerror-poster.png',
+      avatarImage: 'assets/karylgram/profile/youngerror-profile-picture.png',
+      artistImage: null,
       storyImages: [],
       tracks: [
         { title: '404 BRAT', file: 'music/Young ERROR/404 BRAT - Young ERROR.mp3', album: '00 ERRORCODE - EP' },
@@ -131,10 +122,4 @@ window.KHIPHOP_DATA = {
   ]
 };
 
-/*
- * 곡별 선택 입력 필드 예시:
- *   album: '실제 앨범명', year: '2027', explicit: true,
- *   cover: 'assets/covers/sl00z/01.jpg',
- *   lyrics: [{ time: 0, text: '첫 줄' }, { time: 12.5, text: '다음 줄' }]
- * 실제 가사를 입력하지 않는 한 가사 화면은 아름다운 플레이스홀더를 표시합니다.
- */
+

@@ -1,7 +1,4 @@
-/* Karylgram — plain HTML/CSS/JS, no build tools or back-end required.
- * GitHub Pages friendly. All site data lives in data.js.
- * Photo placeholders intentionally use CSS/SVG; no artwork is bundled.
- */
+
 (() => {
   'use strict';
   const DATA = window.KHIPHOP_DATA;
@@ -13,13 +10,25 @@
   const overlayRoot = document.createElement('div');
   overlayRoot.id = 'overlay-root';
   document.body.appendChild(overlayRoot);
-  const audio = document.querySelector('#shared-audio'); // ONE audio element throughout app
+  const audio = document.querySelector('#shared-audio');
   const artists = DATA.artists;
   const getArtist = id => artists.find(a => a.id === id);
   const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const cssColor = a => `--tone:${a.tone};--inkcolor:${a.ink};`;
   const moneyTime = n => Number.isFinite(n) ? `${Math.floor(n / 60)}:${String(Math.floor(n % 60)).padStart(2,'0')}` : '0:00';
-  const img = (src, alt, eager = false) => src ? `<img src="${esc(encodeURI(src))}" alt="${esc(alt)}" loading="${eager ? 'eager' : 'lazy'}" decoding="async" />` : '';
+  const imagePool = new Map();
+  const warmImage = src => {
+    if (!src || imagePool.has(src)) return;
+    const image = new Image();
+    image.decoding = 'async';
+    image.src = encodeURI(src);
+    imagePool.set(src, image);
+  };
+  const warmSiteImages = () => {
+    const paths = [DATA.event.posterImage, DATA.event.secretImage, ...artists.flatMap(a => [a.feedImage, a.avatarImage, a.artistImage, ...(a.storyImages || []), ...a.tracks.map(t => t.cover)])];
+    paths.filter(Boolean).forEach(warmImage);
+  };
+  const img = (src, alt) => src ? `<img src="${esc(encodeURI(src))}" alt="${esc(alt)}" loading="eager" decoding="async" />` : '';
   const imageLayer = (src, alt, eager = false) => `<div class="visual-asset">${img(src, alt, eager)}</div>`;
   const links = a => `#/artist/${a.id}`;
   const iconPaths = {
@@ -41,9 +50,9 @@
   const ico = (name, size = 22, solid = false) => `<svg width="${size}" height="${size}" viewBox="0 0 24 24" aria-hidden="true" fill="${solid ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${iconPaths[name] || ''}</svg>`;
 
   let slideIndex = 0, like = false, saved = false;
-  let current = null; // {artistId, trackIndex} — exactly one current song
+  let current = null;
   let lyricsOpen = false;
-  let story = null; // {artistId, index}
+  let story = null;
   let storyTimer = null, storyProgress = 0, storyPaused = false;
   let toastTimer = null;
   let currentLyric = -1;
@@ -62,7 +71,7 @@
         el.style.display = 'none';
         if (el.classList.contains('brand-logo')) document.querySelector('.brand-logo-fallback')?.style.setProperty('display','block');
       }, {once:true});
-      // Handle cached/previously-failed images on browser history navigation.
+
       if (el.complete && el.naturalWidth === 0) el.dispatchEvent(new Event('error'));
       if (el.complete && el.naturalWidth > 0) el.closest('.visual-asset')?.classList.add('has-image');
       else el.addEventListener('load', () => el.closest('.visual-asset')?.classList.add('has-image'), {once:true});
@@ -83,7 +92,7 @@
   }
 
   function landingPage() {
-    // 메인 로고는 이미 저장소 assets/logo/에 존재하므로 참조합니다.
+
     return `<main class="landing view-enter">
       <span class="landing-corner corner-a"></span><span class="landing-corner corner-b"></span>
       <div class="landing-topline"><span>EST. 2027</span></div>
@@ -133,7 +142,7 @@
   const tagPositions = [null,{left:'9%',top:'21%'},{right:'8%',top:'28%'},{right:'8%',top:'23%'},{right:'8%',bottom:'21%'},{left:'12%',top:'40%'},{right:'10%',top:'19%'},{left:'9%',top:'21%'},{right:'13%',top:'67%'}];
   function positionStyle(n) { const p=tagPositions[n]; return p ? Object.entries(p).map(([k,v])=>`${k}:${v}`).join(';') : ''; }
   function slideHtml(n) {
-    // Each slide only renders its own artwork; the shared viewport controls stay still.
+
     if (n === 0) return `<div class="poster-slide">${imageLayer(DATA.event.posterImage,'K-TRACE 2027 포스터',true)}<div class="slide-grid"></div><div class="poster-inner"><div class="poster-kicker">THE NEW WAVE OF KOREAN HIP-HOP</div><div class="poster-headline">K-<br /><span>TRACE</span><br />2027</div><div class="poster-info"><span>LINEUP REVEALED<br />SEOUL / LIVE + COMPILATION</span><b>10.20</b></div></div></div>`;
     if (n === 8) return `<div class="secret-slide">${imageLayer(DATA.event.secretImage,'비밀 출연진 포스터')}<div class="slide-grid"></div><div class="secret-mark">?</div><div class="secret-title">SECRET ARTIST</div><div class="secret-sub">THE FINAL NAME IS STILL UNDISCLOSED</div><button class="tagged-handle" style="right:10%;bottom:17%" data-action="secret" aria-label="비밀 아티스트 티저">${ico('at',15)}user?</button></div>`;
     const a = artists[n-1];
@@ -182,7 +191,7 @@
         gesture.dragging=true;
         media.setPointerCapture?.(e.pointerId);
       }
-      // Small elastic edge resistance, like a native photo carousel.
+
       const edge=(slideIndex===0&&dx>0)||(slideIndex===8&&dx<0);
       slideTransform(edge?dx*.2:dx,true);
     });
@@ -220,7 +229,7 @@
     </main></div>`;
   }
 
-  /* Global audio — by design only one <audio> can play at once. */
+  
   function activeInfo() { if(!current)return null;const a=getArtist(current.artistId);const t=a&&a.tracks[current.trackIndex];return t ? {a,t:trackWithDefaults(t)}:null; }
   async function playTrack(artistId,index) {
     const a=getArtist(artistId),t=a?.tracks[index];if(!t?.file)return;
@@ -229,7 +238,7 @@
     audio.pause();audio.removeAttribute('src');audio.load();
     current={artistId,trackIndex:index};audio.src=encodeURI(t.file);audio.load();
     renderPlayer();
-    // Existing page cards should immediately reflect the changed track.
+
     if(route().page==='artist') {document.querySelectorAll('.song-row').forEach((r,i)=>{r.classList.toggle('is-playing',Number(r.dataset.track)===index&&r.dataset.artist===artistId);const trail=r.querySelector('.track-trail');if(trail&&!r.disabled)trail.innerHTML=r.classList.contains('is-playing')?ico('volume',20):ico('play',19);});}
     await safePlay();if(lyricsOpen)renderLyrics();
   }
@@ -257,13 +266,13 @@
   function updateLyricsActive(){if(!lyricsOpen)return;const inf=activeInfo();if(!inf)return;const lines=lyricsLines(inf.t);if(!lines.length||!lines.some(l=>typeof l.time==='number'&&Number.isFinite(l.time)))return;let index=-1;for(let i=0;i<lines.length;i++)if((Number(lines[i].time)||0)<=audio.currentTime)index=i;if(index===currentLyric)return;currentLyric=index;const nodes=document.querySelectorAll('.lyric-line');nodes.forEach((el,i)=>el.classList.toggle('active',i===index));if(index>=0)nodes[index]?.scrollIntoView({block:'center',behavior:'smooth'});}
   function closeOverlay(){lyricsOpen=false;story=null;stopStoryTimer();overlayRoot.innerHTML='';document.body.classList.remove('modal-open');}
 
-  /* Instagram-like story viewer — uses fixed count but no unprovided image. */
+  
   function storyArtists(){return artists.filter(a=>a.stories>0);}
   function openStory(id,index=0){const a=getArtist(id);if(!a)return;lyricsOpen=false;if(!a.stories){stopStoryTimer();story=null;overlayRoot.innerHTML=`<div class="overlay story-overlay" data-overlay="story"><section class="story-sheet empty-story" role="dialog" aria-modal="true" aria-label="${esc(a.name)} 스토리 없음"><div class="story-header"><div class="story-avatar">${img(a.avatarImage,`${a.name} 프로필`,true)}</div><div class="story-name-info">${esc(a.handle)}</div><button class="story-close" data-action="story-close" aria-label="닫기">${ico('close',24)}</button></div><div class="story-empty-message">업로드한 Stories가 없습니다</div></section></div>`;document.body.classList.add('modal-open');handleMissingImages(overlayRoot);return;}story={artistId:id,index};storyProgress=0;storyPaused=false;renderStory();}
   function stopStoryTimer(){if(storyTimer){clearInterval(storyTimer);storyTimer=null;}}
   function startStoryTimer(){stopStoryTimer();storyTimer=setInterval(()=>{if(storyPaused||!story)return;storyProgress+=100/5800;const prog=overlayRoot.querySelector('.story-segment.current span');if(prog)prog.style.width=`${Math.min(100,storyProgress*100)}%`;if(storyProgress>=1)nextStory(1);},100);}
   function nextStory(delta){if(!story)return;const a=getArtist(story.artistId);let index=story.index+delta;if(index>=0&&index<a.stories){story.index=index;}else{const group=storyArtists();let groupIndex=group.findIndex(x=>x.id===story.artistId)+delta;if(groupIndex<0){closeOverlay();return;}if(groupIndex>=group.length){closeOverlay();return;}const target=group[groupIndex];story.artistId=target.id;story.index=delta>0?0:target.stories-1;}storyProgress=0;renderStory();}
-  /* Story captions are native HTML overlays, kept out of the artwork files. */
+  
   const STORY_LAYOUTS = {
     sl00z: [{text:'again.',position:'lower-left',style:'minimal'},{text:'04:13',position:'upper-right',style:'timestamp'}],
     kayo: [{text:'nice weather ☀️',position:'upper-center',style:'soft'}],
@@ -331,5 +340,9 @@
   audio.addEventListener('pause',()=>{renderPlayer();const b=document.querySelector('.full-control.play');if(b)b.innerHTML=ico('play',28,true);});
   audio.addEventListener('ended',skipNext);
   audio.addEventListener('error',()=>{if(current)toast('음원 파일을 불러올 수 없어요. 저장소의 파일 경로를 확인해 주세요.');});
+  warmSiteImages();
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {}));
+  }
   render();
 })();
