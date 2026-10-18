@@ -282,7 +282,7 @@
     nafi: [{text:'thank you always ♡',position:'lower-center',style:'soft'},{text:'브랜드 행사',position:'upper-center',style:'soft'},{text:'오늘도 감사합니다 🤍',position:'lower-center',style:'soft'}]
   };
   function storyContent(artist,index,src){
-    if(artist.id==='janedoe'&&index===3)return '<div class="story-plain-black"><span>말 좀 그만 걸어</span></div>';
+    if(artist.id==='janedoe'&&index===3)return '<div class="story-plain-black"><span>클럽에서 봤다고 디엠좀하지마 ㅆ발<br>안간다</span></div>';
     if(!src)return `<div class="story-center"><div class="story-index">${String(index+1).padStart(2,'0')}</div><div class="story-main-label">${esc(artist.name)}</div><div class="story-caption">STORY / ${String(index+1).padStart(2,'0')}</div></div>`;
     const item=STORY_LAYOUTS[artist.id]?.[index];if(!item)return '';
     const content=item.music?`<span class="story-music-icon">♫</span><span class="story-music-copy"><strong>${esc(item.music.title)}</strong><small>${esc(item.music.artist)}</small></span>`:esc(item.text);
