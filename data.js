@@ -108,7 +108,7 @@ window.KHIPHOP_DATA = {
       tracks: [
         { title: 'I am Technology', file: 'music/NAFI/I am Technology - NAFI.mp3' },
         { title: 'Silk Guillotine', file: 'music/NAFI/Silk Guillotine - NAFI.mp3' },
-        { title: 'COMING SOON', file: null }
+        { title: 'PANDUN (판돈)', file: 'music/NAFI/PANDUN (판돈) - NAFI.mp3' }
       ],
       similar: [{ name: 'BIBI', url: 'https://www.youtube.com/@naked_BIBI' }, { name: 'DEAN', url: 'https://www.youtube.com/@DEANTRBL' }]
     },
