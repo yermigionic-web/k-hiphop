@@ -29,13 +29,7 @@
 @media (min-width:700px){.story-sheet{border-radius:19px;height:min(88vh,760px);min-height:550px}.lyrics-sheet{height:min(92vh,850px);border-radius:22px}.landing-sub{margin-bottom:66px}}
 @media (max-width:560px){.site-shell{box-shadow:none}.desktop-watermark{display:none}.landing-inner{margin-top:-12px}.landing-sub{margin-bottom:55px}.carousel-hit{opacity:.2}.post-media{height:108vw;max-height:530px}.music-heading{padding-top:17px}.story-sheet{height:100dvh;min-height:0}.artist-hero{height:73vh;max-height:600px}}@media (max-width:375px){.poster-inner{padding:30px 23px}.hero-name{font-size:45px}.post-media{height:114vw}.story-row{gap:10px}.feed-meta{padding:0 16px}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
-/* Once real artwork exists, remove only the temporary editorial lettering;
-   the linked handle, counter, gradients and navigation remain usable. */
-.artist-slide .visual-asset.has-image ~ .slide-fallback,
-.poster-slide .visual-asset.has-image ~ .poster-inner,
-.secret-slide .visual-asset.has-image ~ .secret-mark,
-.secret-slide .visual-asset.has-image ~ .secret-title,
-.secret-slide .visual-asset.has-image ~ .secret-sub{display:none}
+/* K-TRACE headlines remain visible above all uploaded artwork. */
 
 /* === 2027 experience refinement: restrained motion, native-feeling feed, dark music === */
 /* Landing orb: quiet ten-second breathing motion instead of a static pink ring. */
@@ -118,18 +112,14 @@
 /* Story profile with no uploads: still visible, neutral ring and an informative viewer. */
 .story-item.no-stories .story-ring{background:#d7d7df}.empty-story{background:linear-gradient(160deg,#242433,#0e1018)!important}.story-empty-message{position:absolute;inset:30% 10%;display:grid;place-items:center;color:#fff;font-size:clamp(18px,5vw,23px);font-weight:700;text-align:center;letter-spacing:-.035em}.empty-story .story-avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}
 
-/* Keep original K-TRACE editorial labels layered over the uploaded artwork. */
-.artist-slide .visual-asset.has-image ~ .slide-fallback,
-.poster-slide .visual-asset.has-image ~ .poster-inner,
-.secret-slide .visual-asset.has-image ~ .secret-mark,
-.secret-slide .visual-asset.has-image ~ .secret-title,
-.secret-slide .visual-asset.has-image ~ .secret-sub{display:flex}
-.artist-slide .visual-asset.has-image ~ .slide-fallback{display:flex}
-.artist-slide .visual-asset.has-image ~ .slide-fallback .slide-stage-name{opacity:1}
-.poster-slide .visual-asset.has-image ~ .poster-inner{display:flex}
-.secret-slide .visual-asset.has-image ~ .secret-mark,
-.secret-slide .visual-asset.has-image ~ .secret-title,
-.secret-slide .visual-asset.has-image ~ .secret-sub{display:block}
 .story-avatar{position:relative;overflow:hidden}
 .story-avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
 .story-avatar .story-avatar-fallback{position:relative;z-index:0}
+
+/* Ensure poster typography is always visible over uploaded artwork, not only placeholders. */
+.poster-slide .poster-inner{display:flex;z-index:4;text-shadow:0 3px 16px #0009}
+.artist-slide .slide-fallback{display:flex;z-index:4;text-shadow:0 3px 16px #0009}
+.artist-slide .slide-stage-name{opacity:1}
+.secret-slide .secret-mark,.secret-slide .secret-title,.secret-slide .secret-sub{display:block;z-index:4;text-shadow:0 3px 16px #000a}
+.story-header .story-avatar{flex:none;overflow:hidden}
+.story-header .story-avatar img{display:block;width:100%;height:100%;object-fit:cover}
