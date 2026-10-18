@@ -263,12 +263,28 @@
   function stopStoryTimer(){if(storyTimer){clearInterval(storyTimer);storyTimer=null;}}
   function startStoryTimer(){stopStoryTimer();storyTimer=setInterval(()=>{if(storyPaused||!story)return;storyProgress+=100/5800;const prog=overlayRoot.querySelector('.story-segment.current span');if(prog)prog.style.width=`${Math.min(100,storyProgress*100)}%`;if(storyProgress>=1)nextStory(1);},100);}
   function nextStory(delta){if(!story)return;const a=getArtist(story.artistId);let index=story.index+delta;if(index>=0&&index<a.stories){story.index=index;}else{const group=storyArtists();let groupIndex=group.findIndex(x=>x.id===story.artistId)+delta;if(groupIndex<0){closeOverlay();return;}if(groupIndex>=group.length){closeOverlay();return;}const target=group[groupIndex];story.artistId=target.id;story.index=delta>0?0:target.stories-1;}storyProgress=0;renderStory();}
+  /* Story captions are native HTML overlays, kept out of the artwork files. */
+  const STORY_LAYOUTS = {
+    sl00z: [{text:'again.',position:'lower-left',style:'minimal'},{text:'04:13',position:'upper-right',style:'timestamp'}],
+    kayo: [{text:'nice weather ☀️',position:'upper-center',style:'soft'}],
+    jaeone: [{text:'@groundwork',position:'lower-left',style:'mention'},{text:'수고했다',position:'lower-center',style:'minimal'}],
+    janedoe: [{text:'뭐',position:'upper-right',style:'minimal'},{text:'out.',position:'upper-center',style:'bold'},{text:'이게 맛있음',position:'lower-center',style:'minimal'},null,{text:'REC 🔴',position:'upper-right',style:'minimal'},{text:'ㅋㅋ',position:'lower-center',style:'bold'},null,null,{text:'야',position:'mid-center',style:'bold'}],
+    soda: [{text:'03:47',position:'upper-right',style:'timestamp'},{music:{title:'Nirvana',artist:'Scails (feat. 고스트클럽)'},position:'mid-center'},{text:'곡 안 나옴',position:'lower-left',style:'minimal'},{text:'나만 진심이지',position:'mid-center',style:'minimal'},{text:'집 가기 싫다',position:'lower-center',style:'minimal'}],
+    nafi: [{text:'thank you always ♡',position:'lower-center',style:'soft'},{text:'브랜드 행사',position:'upper-center',style:'soft'},{text:'오늘도 감사합니다 🤍',position:'lower-center',style:'soft'}]
+  };
+  function storyContent(artist,index,src){
+    if(artist.id==='janedoe'&&index===3)return '<div class="story-plain-black"><span>말 좀 그만 걸어</span></div>';
+    if(!src)return `<div class="story-center"><div class="story-index">${String(index+1).padStart(2,'0')}</div><div class="story-main-label">${esc(artist.name)}</div><div class="story-caption">STORY / ${String(index+1).padStart(2,'0')}</div></div>`;
+    const item=STORY_LAYOUTS[artist.id]?.[index];if(!item)return '';
+    const content=item.music?`<span class="story-music-icon">♫</span><span class="story-music-copy"><strong>${esc(item.music.title)}</strong><small>${esc(item.music.artist)}</small></span>`:esc(item.text);
+    return `<div class="story-editorial ${item.position||'mid-center'} ${item.music?'music':item.style||'minimal'}">${content}</div>`;
+  }
   function renderStory(){if(!story)return;const a=getArtist(story.artistId),n=story.index,src=a.storyImages?.[n]||null;
     overlayRoot.innerHTML=`<div class="overlay story-overlay" data-overlay="story"><section class="story-sheet" style="${cssColor(a)}" role="dialog" aria-modal="true" aria-label="${esc(a.name)} 스토리 ${n+1}/${a.stories}">
        ${imageLayer(src,`${a.name} 스토리 ${n+1}`)}
        <div class="story-progress">${Array.from({length:a.stories},(_,i)=>`<div class="story-segment ${i===n?'current':''}"><span style="width:${i<n?'100%':'0%'}"></span></div>`).join('')}</div>
        <div class="story-header"><div class="story-avatar">${img(a.avatarImage,`${a.name} 프로필`,true)}<span class="story-avatar-fallback">${esc(a.name.slice(0,2).toUpperCase())}</span></div><div class="story-name-info">${esc(a.handle)} <span>${n+1} / ${a.stories}</span></div><button class="story-close" data-action="story-close" aria-label="스토리 닫기">${ico('close',24)}</button></div>
-       <div class="story-center"><div class="story-index">${String(n+1).padStart(2,'0')}</div><div class="story-main-label">${esc(a.name)}</div><div class="story-caption">STORY / ${String(n+1).padStart(2,'0')}</div></div>
+       ${storyContent(a,n,src)}
        <button class="story-tap prev" data-action="story-prev" aria-label="이전 스토리"></button><button class="story-tap next" data-action="story-next" aria-label="다음 스토리"></button><div class="story-foot">메세지 보내기</div>
       </section></div>`;document.body.classList.add('modal-open');handleMissingImages(overlayRoot);startStoryTimer();}
 

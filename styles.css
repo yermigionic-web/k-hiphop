@@ -139,3 +139,12 @@
 .poster-slide .poster-kicker{color:#f1e9ef;background:rgba(0,0,0,.76);padding:7px 10px;border-radius:3px;align-self:flex-start;letter-spacing:.20em;text-shadow:none;box-decoration-break:clone}
 .poster-slide .poster-headline{color:#17131c;text-shadow:1px 1px 0 #fff,0 0 12px #ffffffec,0 0 28px #ffffffa8}
 .poster-slide .poster-headline span{color:#ad155f;text-shadow:1px 1px 0 #fff,0 0 12px #fff9,0 0 24px #ffffff60}
+
+/* Karylgram Stories — lightweight text and music-share stickers over actual uploads. */
+.story-editorial{position:absolute;z-index:4;max-width:82%;pointer-events:none;font-weight:650;font-size:clamp(17px,4.5vw,23px);line-height:1.38;text-shadow:0 2px 8px #000c;letter-spacing:-.035em}
+.story-editorial.upper-right{top:19%;right:7%;text-align:right}.story-editorial.upper-center{top:24%;left:50%;transform:translateX(-50%);text-align:center}.story-editorial.lower-left{bottom:19%;left:9%}.story-editorial.lower-center{bottom:22%;left:50%;transform:translateX(-50%);text-align:center}.story-editorial.mid-center{top:49%;left:50%;transform:translate(-50%,-50%);text-align:center}
+.story-editorial.minimal{color:white;font-size:clamp(15px,4vw,21px)}.story-editorial.timestamp{font-family:monospace;letter-spacing:.08em;color:white;background:#0007;border-radius:6px;padding:6px 10px;font-size:17px}.story-editorial.soft{color:white;background:#ffffff35;backdrop-filter:blur(5px);padding:7px 13px;border-radius:12px;white-space:nowrap}.story-editorial.bold{font-size:clamp(24px,7vw,40px);font-weight:900;color:white}
+.story-editorial.mention{background:#fff;color:#17171a;text-shadow:none;border-radius:7px;padding:7px 13px;font-size:17px;transform:rotate(-5deg)}
+.story-editorial.music{display:flex;align-items:center;gap:11px;min-width:min(79%,310px);padding:13px 16px;border-radius:15px;background:#ece8eae8;color:#202027;box-shadow:0 7px 24px #0007;text-shadow:none;text-align:left}
+.story-music-icon{height:43px;width:43px;border-radius:9px;background:linear-gradient(135deg,#343341,#988ca3);color:white;display:grid;place-items:center;flex:none;font-size:24px}.story-music-copy{display:flex;flex-direction:column;min-width:0}.story-music-copy strong{font-size:16px}.story-music-copy small{font-size:12px;font-weight:500;line-height:1.4}
+.story-plain-black{position:absolute;inset:0;background:#08080a;color:#fff;display:flex;justify-content:center;align-items:center;text-align:center;font-size:clamp(24px,7vw,38px);font-weight:750;letter-spacing:-.045em;z-index:2}.story-plain-black span{padding:0 24px}
