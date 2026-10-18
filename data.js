@@ -19,7 +19,7 @@ window.KHIPHOP_DATA = {
     {
       id: 'sl00z', name: 'SL00Z', korean: '슬로즈', handle: 'sn00zesl00z',
       label: 'NARROWROOM RECORDS', genre: 'INDUSTRIAL / ALTERNATIVE',
-      tagline: '소음을 가장 조용하게 만드는 사람.', tone: '#a2a8b2', ink: '#24252e',
+      tagline: '인더스트리계 부뚜막 위의 얌전한 고양이', tone: '#a2a8b2', ink: '#24252e',
       stories: 2,
       feedImage: 'assets/karylgram/sl00z-poster.png', // Karylgram 라인업 공연 이미지
       avatarImage: 'assets/karylgram/profile/sl00z-profile-picture.png', // Karylgram story avatar
@@ -35,7 +35,7 @@ window.KHIPHOP_DATA = {
     {
       id: 'kayo', name: 'KAY KAYO', korean: '케이카요', handle: 'afrokkayo',
       label: 'KAYO WORKS', genre: 'AFRO-FUSION / DANCEHALL',
-      tagline: '비트가 걸리면 먼저 몸이 알아챈다.', tone: '#cc8b41', ink: '#573b24',
+      tagline: '모두를 움직이게 만드는 아프로비트 최강자', tone: '#cc8b41', ink: '#573b24',
       stories: 1,
       feedImage: 'assets/karylgram/kaykayo-poster.png', // Karylgram 라인업 공연 이미지
       avatarImage: 'assets/karylgram/profile/kaykayo-profile-picture.png', // Karylgram story avatar
@@ -67,7 +67,7 @@ window.KHIPHOP_DATA = {
     {
       id: 'janedoe', name: 'Jane Doe', korean: '제인 도', handle: 'notjanedoe',
       label: 'GROUNDWORK', genre: 'RAGE / HARDCORE TRAP',
-      tagline: '이름이 없어도 모두 이름을 안다.', tone: '#8b3d47', ink: '#2b1821',
+      tagline: '비프만큼이나 비트도 Clean and 깔끔', tone: '#8b3d47', ink: '#2b1821',
       stories: 9,
       feedImage: 'assets/karylgram/janedoe_poster.png', // Karylgram 라인업 공연 이미지
       avatarImage: 'assets/karylgram/profile/janedoe-profile-picture.png', // Karylgram story avatar
@@ -83,7 +83,7 @@ window.KHIPHOP_DATA = {
     {
       id: 'soda', name: 'Lil Soda', korean: '릴 소다', handle: 'tabaccosuitai',
       label: 'NARROWROOM RECORDS', genre: 'EMO RAP / SHOEGAZE TRAP',
-      tagline: '마음이 시끄러우면 트랙을 켠다.', tone: '#d56594', ink: '#49263d',
+      tagline: '국힙 EMO 숭배자들의 종착지', tone: '#d56594', ink: '#49263d',
       stories: 5,
       feedImage: 'assets/karylgram/lilsoda_poster.png', // Karylgram 라인업 공연 이미지
       avatarImage: 'assets/karylgram/profile/lilsoda-profile-picture.png', // Karylgram story avatar
@@ -99,7 +99,7 @@ window.KHIPHOP_DATA = {
     {
       id: 'nafi', name: 'NAFI', korean: '나피', handle: 'shinnafi',
       label: 'LAYER NINE ENTERTAINMENT / NAFI OFFICE', genre: 'ALTERNATIVE R&B / POP RAP',
-      tagline: '무대가 끝나고 남는 진짜 얼굴.', tone: '#b09c88', ink: '#55483d',
+      tagline: 'NAFI로도, 나희로도 빛나는 얼굴', tone: '#b09c88', ink: '#55483d',
       stories: 3,
       feedImage: 'assets/karylgram/nafi-poster.png', // Karylgram 라인업 공연 이미지
       avatarImage: 'assets/karylgram/profile/nafi-profile-picture.png', // Karylgram story avatar
@@ -115,7 +115,7 @@ window.KHIPHOP_DATA = {
     {
       id: 'error', name: 'Young ERROR', korean: '영에러', handle: 'youngcitybanger',
       label: 'FILEBREEDS', genre: 'DIGICORE / NEO-RAGE',
-      tagline: '오류 수정? 왜요. 그냥 좋은데.', tone: '#809abd', ink: '#212e40',
+      tagline: '뭘 고쳐 그냥 좋은데 ㅋㅋ Yarr', tone: '#809abd', ink: '#212e40',
       stories: 0,
       feedImage: 'assets/karylgram/youngerror-poster.png', // Karylgram 라인업 공연 이미지
       avatarImage: 'assets/karylgram/profile/youngerror-profile-picture.png', // Karylgram story avatar

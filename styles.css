@@ -134,3 +134,8 @@
 .artist-slide > .slide-number{z-index:4}
 .artist-slide > .tagged-handle,.secret-slide > .tagged-handle{z-index:5}
 .secret-slide > .secret-mark,.secret-slide > .secret-title,.secret-slide > .secret-sub{z-index:3;display:block;visibility:visible;opacity:1}
+
+/* K-TRACE poster type contrast adjustment */
+.poster-slide .poster-kicker{color:#f1e9ef;background:rgba(0,0,0,.76);padding:7px 10px;border-radius:3px;align-self:flex-start;letter-spacing:.20em;text-shadow:none;box-decoration-break:clone}
+.poster-slide .poster-headline{color:#17131c;text-shadow:1px 1px 0 #fff,0 0 12px #ffffffec,0 0 28px #ffffffa8}
+.poster-slide .poster-headline span{color:#ad155f;text-shadow:1px 1px 0 #fff,0 0 12px #fff9,0 0 24px #ffffff60}
