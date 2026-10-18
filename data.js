@@ -22,7 +22,7 @@ window.KHIPHOP_DATA = {
       tagline: '소음을 가장 조용하게 만드는 사람.', tone: '#a2a8b2', ink: '#24252e',
       stories: 2,
       feedImage: 'assets/karylgram/sl00z-poster.png', // Karylgram 라인업 공연 이미지
-      avatarImage: null, // 'assets/characters/sl00z/avatar.jpg'
+      avatarImage: 'assets/karylgram/profile/sl00z-profile-picture.png', // Karylgram story avatar
       artistImage: null, // 'assets/characters/sl00z/artist.jpg' (인스타 프사와 다름)
       storyImages: [], // 'assets/stories/sl00z/01.jpg', 'assets/stories/sl00z/02.jpg'
       tracks: [
@@ -38,7 +38,7 @@ window.KHIPHOP_DATA = {
       tagline: '비트가 걸리면 먼저 몸이 알아챈다.', tone: '#cc8b41', ink: '#573b24',
       stories: 1,
       feedImage: 'assets/karylgram/kaykayo-poster.png', // Karylgram 라인업 공연 이미지
-      avatarImage: null, // 'assets/characters/kayo/avatar.jpg'
+      avatarImage: 'assets/karylgram/profile/kaykayo-profile-picture.png', // Karylgram story avatar
       artistImage: null, // 'assets/characters/kayo/artist.jpg'
       storyImages: [],
       tracks: [
@@ -54,7 +54,7 @@ window.KHIPHOP_DATA = {
       tagline: '시간이 증명한 마이크의 무게.', tone: '#708078', ink: '#303b36',
       stories: 2,
       feedImage: 'assets/karylgram/jae-one-poster.png', // Karylgram 라인업 공연 이미지
-      avatarImage: null, // 'assets/characters/jaeone/avatar.jpg'
+      avatarImage: 'assets/karylgram/profile/jae-one-profile-picture.png', // Karylgram story avatar
       artistImage: null, // 'assets/characters/jaeone/artist.jpg'
       storyImages: [],
       tracks: [
@@ -70,7 +70,7 @@ window.KHIPHOP_DATA = {
       tagline: '이름이 없어도 모두 이름을 안다.', tone: '#8b3d47', ink: '#2b1821',
       stories: 9,
       feedImage: 'assets/karylgram/janedoe_poster.png', // Karylgram 라인업 공연 이미지
-      avatarImage: null, // 'assets/characters/janedoe/avatar.jpg'
+      avatarImage: 'assets/karylgram/profile/janedoe-profile-picture.png', // Karylgram story avatar
       artistImage: null, // 'assets/characters/janedoe/artist.jpg'
       storyImages: [],
       tracks: [
@@ -86,7 +86,7 @@ window.KHIPHOP_DATA = {
       tagline: '마음이 시끄러우면 트랙을 켠다.', tone: '#d56594', ink: '#49263d',
       stories: 5,
       feedImage: 'assets/karylgram/lilsoda_poster.png', // Karylgram 라인업 공연 이미지
-      avatarImage: null, // 'assets/characters/soda/avatar.jpg'
+      avatarImage: 'assets/karylgram/profile/lilsoda-profile-picture.png', // Karylgram story avatar
       artistImage: null, // 'assets/characters/soda/artist.jpg'
       storyImages: [],
       tracks: [
@@ -102,7 +102,7 @@ window.KHIPHOP_DATA = {
       tagline: '무대가 끝나고 남는 진짜 얼굴.', tone: '#b09c88', ink: '#55483d',
       stories: 3,
       feedImage: 'assets/karylgram/nafi-poster.png', // Karylgram 라인업 공연 이미지
-      avatarImage: null, // 'assets/characters/nafi/avatar.jpg'
+      avatarImage: 'assets/karylgram/profile/nafi-profile-picture.png', // Karylgram story avatar
       artistImage: null, // 'assets/characters/nafi/artist.jpg'
       storyImages: [],
       tracks: [
@@ -118,7 +118,7 @@ window.KHIPHOP_DATA = {
       tagline: '오류 수정? 왜요. 그냥 좋은데.', tone: '#809abd', ink: '#212e40',
       stories: 0,
       feedImage: 'assets/karylgram/youngerror-poster.png', // Karylgram 라인업 공연 이미지
-      avatarImage: null, // 'assets/characters/error/avatar.jpg'
+      avatarImage: 'assets/karylgram/profile/youngerror-profile-picture.png', // Karylgram story avatar
       artistImage: null, // 'assets/characters/error/artist.jpg'
       storyImages: [],
       tracks: [

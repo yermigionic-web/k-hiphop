@@ -203,7 +203,7 @@
   }
 
   function storiesSection() {
-    const rows=artists.filter(a=>a.stories>0).map(a=>`<button class="story-item" type="button" data-action="story-open" data-artist="${a.id}" aria-label="${esc(a.name)} 스토리 ${a.stories}개 보기"><span class="story-ring" style="${cssColor(a)}"><span class="story-photo">${img(a.avatarImage,`${a.name} 프로필`,true)}${esc(a.name.slice(0,2).toUpperCase())}</span></span><span class="story-name">${esc(a.name)}</span></button>`).join('');
+    const rows=artists.map(a=>`<button class="story-item ${a.stories ? '' : 'no-stories'}" type="button" data-action="story-open" data-artist="${a.id}" aria-label="${esc(a.name)} ${a.stories ? `스토리 ${a.stories}개 보기` : '업로드한 스토리 없음'}"><span class="story-ring ${a.stories ? '' : 'seen'}" style="${cssColor(a)}"><span class="story-photo">${img(a.avatarImage,`${a.name} 프로필`,true)}${esc(a.name.slice(0,2).toUpperCase())}</span></span><span class="story-name">${esc(a.name)}</span></button>`).join('');
     return `<section class="stories-section" aria-label="아티스트 스토리"><div class="story-row">${rows}</div></section>`;
   }
 
@@ -259,7 +259,7 @@
 
   /* Instagram-like story viewer — uses fixed count but no unprovided image. */
   function storyArtists(){return artists.filter(a=>a.stories>0);}
-  function openStory(id,index=0){if(!getArtist(id)?.stories)return;lyricsOpen=false;story={artistId:id,index};storyProgress=0;storyPaused=false;renderStory();}
+  function openStory(id,index=0){const a=getArtist(id);if(!a)return;lyricsOpen=false;if(!a.stories){stopStoryTimer();story=null;overlayRoot.innerHTML=`<div class="overlay story-overlay" data-overlay="story"><section class="story-sheet empty-story" role="dialog" aria-modal="true" aria-label="${esc(a.name)} 스토리 없음"><div class="story-header"><div class="story-avatar">${img(a.avatarImage,`${a.name} 프로필`,true)}</div><div class="story-name-info">${esc(a.handle)}</div><button class="story-close" data-action="story-close" aria-label="닫기">${ico('close',24)}</button></div><div class="story-empty-message">업로드한 Stories가 없습니다</div></section></div>`;document.body.classList.add('modal-open');handleMissingImages(overlayRoot);return;}story={artistId:id,index};storyProgress=0;storyPaused=false;renderStory();}
   function stopStoryTimer(){if(storyTimer){clearInterval(storyTimer);storyTimer=null;}}
   function startStoryTimer(){stopStoryTimer();storyTimer=setInterval(()=>{if(storyPaused||!story)return;storyProgress+=100/5800;const prog=overlayRoot.querySelector('.story-segment.current span');if(prog)prog.style.width=`${Math.min(100,storyProgress*100)}%`;if(storyProgress>=1)nextStory(1);},100);}
   function nextStory(delta){if(!story)return;const a=getArtist(story.artistId);let index=story.index+delta;if(index>=0&&index<a.stories){story.index=index;}else{const group=storyArtists();let groupIndex=group.findIndex(x=>x.id===story.artistId)+delta;if(groupIndex<0){closeOverlay();return;}if(groupIndex>=group.length){closeOverlay();return;}const target=group[groupIndex];story.artistId=target.id;story.index=delta>0?0:target.stories-1;}storyProgress=0;renderStory();}
