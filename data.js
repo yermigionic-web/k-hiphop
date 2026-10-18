@@ -12,8 +12,8 @@ window.KHIPHOP_DATA = {
   event: {
     name: 'K-TRACE 2027', date: '2027.10.20',
     instagram: 'ktrace_official',
-    posterImage: null, // 예: 'assets/ktrace/ktrace-2027-poster.jpg'
-    secretImage: null, // 예: 'assets/ktrace/secret.jpg'
+    posterImage: 'assets/karylgram/ktrace-poster.png', // K-TRACE 2027 메인 피드 이미지
+    secretImage: 'assets/karylgram/secret-user-poster.png', // SECRET 피드 이미지
   },
   artists: [
     {
@@ -21,7 +21,7 @@ window.KHIPHOP_DATA = {
       label: 'NARROWROOM RECORDS', genre: 'INDUSTRIAL / ALTERNATIVE',
       tagline: '소음을 가장 조용하게 만드는 사람.', tone: '#a2a8b2', ink: '#24252e',
       stories: 2,
-      feedImage: null, // 'assets/characters/sl00z/feed.jpg'
+      feedImage: 'assets/karylgram/sl00z-poster.png', // Karylgram 라인업 공연 이미지
       avatarImage: null, // 'assets/characters/sl00z/avatar.jpg'
       artistImage: null, // 'assets/characters/sl00z/artist.jpg' (인스타 프사와 다름)
       storyImages: [], // 'assets/stories/sl00z/01.jpg', 'assets/stories/sl00z/02.jpg'
@@ -37,14 +37,14 @@ window.KHIPHOP_DATA = {
       label: 'KAYO WORKS', genre: 'AFRO-FUSION / DANCEHALL',
       tagline: '비트가 걸리면 먼저 몸이 알아챈다.', tone: '#cc8b41', ink: '#573b24',
       stories: 1,
-      feedImage: null, // 'assets/characters/kayo/feed.jpg'
+      feedImage: 'assets/karylgram/kaykayo-poster.png', // Karylgram 라인업 공연 이미지
       avatarImage: null, // 'assets/characters/kayo/avatar.jpg'
       artistImage: null, // 'assets/characters/kayo/artist.jpg'
       storyImages: [],
       tracks: [
         { title: 'DELLY', file: 'music/KAY KAYO/DELLY - KAY KAYO.mp3' },
         { title: 'ODOGWU', file: 'music/KAY KAYO/ODOGWU - KAY KAYO.mp3' },
-        { title: 'COMING SOON', file: null }
+        { title: 'Viper', file: 'music/KAY KAYO/Viper - KAY KAYO.mp3' }
       ],
       similar: [{ name: 'PENOMECO', url: 'https://www.youtube.com/@PENOMECO' }, { name: 'Burna Boy', url: 'https://www.youtube.com/@BurnaBoy' }]
     },
@@ -53,7 +53,7 @@ window.KHIPHOP_DATA = {
       label: 'GROUNDWORK', genre: 'BOOM BAP / JAZZ RAP',
       tagline: '시간이 증명한 마이크의 무게.', tone: '#708078', ink: '#303b36',
       stories: 2,
-      feedImage: null, // 'assets/characters/jaeone/feed.jpg'
+      feedImage: 'assets/karylgram/jae-one-poster.png', // Karylgram 라인업 공연 이미지
       avatarImage: null, // 'assets/characters/jaeone/avatar.jpg'
       artistImage: null, // 'assets/characters/jaeone/artist.jpg'
       storyImages: [],
@@ -69,7 +69,7 @@ window.KHIPHOP_DATA = {
       label: 'GROUNDWORK', genre: 'RAGE / HARDCORE TRAP',
       tagline: '이름이 없어도 모두 이름을 안다.', tone: '#8b3d47', ink: '#2b1821',
       stories: 9,
-      feedImage: null, // 'assets/characters/janedoe/feed.jpg'
+      feedImage: 'assets/karylgram/janedoe_poster.png', // Karylgram 라인업 공연 이미지
       avatarImage: null, // 'assets/characters/janedoe/avatar.jpg'
       artistImage: null, // 'assets/characters/janedoe/artist.jpg'
       storyImages: [],
@@ -85,14 +85,14 @@ window.KHIPHOP_DATA = {
       label: 'NARROWROOM RECORDS', genre: 'EMO RAP / SHOEGAZE TRAP',
       tagline: '마음이 시끄러우면 트랙을 켠다.', tone: '#d56594', ink: '#49263d',
       stories: 5,
-      feedImage: null, // 'assets/characters/soda/feed.jpg'
+      feedImage: 'assets/karylgram/lilsoda_poster.png', // Karylgram 라인업 공연 이미지
       avatarImage: null, // 'assets/characters/soda/avatar.jpg'
       artistImage: null, // 'assets/characters/soda/artist.jpg'
       storyImages: [],
       tracks: [
         { title: '수면제', file: 'music/Lil Soda/수면제 - Lil Soda.mp3' },
         { title: '푸른봄은썩었어', file: 'music/Lil Soda/푸른봄은썩었어 - Lil Soda.mp3' },
-        { title: 'COMING SOON', file: null }
+        { title: '새까만계이름', file: 'music/Lil Soda/새까만계이름 - Lil Soda.mp3', explicit: true }
       ],
       similar: [{ name: 'YANGHONGONE', url: 'https://www.youtube.com/channel/UCO4p2LbFEEF1HKm4HnUVjfg' }, { name: 'Scails', url: 'https://www.youtube.com/@xscails' }]
     },
@@ -101,7 +101,7 @@ window.KHIPHOP_DATA = {
       label: 'LAYER NINE ENTERTAINMENT / NAFI OFFICE', genre: 'ALTERNATIVE R&B / POP RAP',
       tagline: '무대가 끝나고 남는 진짜 얼굴.', tone: '#b09c88', ink: '#55483d',
       stories: 3,
-      feedImage: null, // 'assets/characters/nafi/feed.jpg'
+      feedImage: 'assets/karylgram/nafi-poster.png', // Karylgram 라인업 공연 이미지
       avatarImage: null, // 'assets/characters/nafi/avatar.jpg'
       artistImage: null, // 'assets/characters/nafi/artist.jpg'
       storyImages: [],
@@ -117,7 +117,7 @@ window.KHIPHOP_DATA = {
       label: 'FILEBREEDS', genre: 'DIGICORE / NEO-RAGE',
       tagline: '오류 수정? 왜요. 그냥 좋은데.', tone: '#809abd', ink: '#212e40',
       stories: 0,
-      feedImage: null, // 'assets/characters/error/feed.jpg'
+      feedImage: 'assets/karylgram/youngerror-poster.png', // Karylgram 라인업 공연 이미지
       avatarImage: null, // 'assets/characters/error/avatar.jpg'
       artistImage: null, // 'assets/characters/error/artist.jpg'
       storyImages: [],
