@@ -267,7 +267,7 @@
     overlayRoot.innerHTML=`<div class="overlay story-overlay" data-overlay="story"><section class="story-sheet" style="${cssColor(a)}" role="dialog" aria-modal="true" aria-label="${esc(a.name)} 스토리 ${n+1}/${a.stories}">
        ${imageLayer(src,`${a.name} 스토리 ${n+1}`)}
        <div class="story-progress">${Array.from({length:a.stories},(_,i)=>`<div class="story-segment ${i===n?'current':''}"><span style="width:${i<n?'100%':'0%'}"></span></div>`).join('')}</div>
-       <div class="story-header"><div class="story-avatar">${esc(a.name.slice(0,2).toUpperCase())}</div><div class="story-name-info">${esc(a.handle)} <span>${n+1} / ${a.stories}</span></div><button class="story-close" data-action="story-close" aria-label="스토리 닫기">${ico('close',24)}</button></div>
+       <div class="story-header"><div class="story-avatar">${img(a.avatarImage,`${a.name} 프로필`,true)}<span class="story-avatar-fallback">${esc(a.name.slice(0,2).toUpperCase())}</span></div><div class="story-name-info">${esc(a.handle)} <span>${n+1} / ${a.stories}</span></div><button class="story-close" data-action="story-close" aria-label="스토리 닫기">${ico('close',24)}</button></div>
        <div class="story-center"><div class="story-index">${String(n+1).padStart(2,'0')}</div><div class="story-main-label">${esc(a.name)}</div><div class="story-caption">STORY / ${String(n+1).padStart(2,'0')}</div></div>
        <button class="story-tap prev" data-action="story-prev" aria-label="이전 스토리"></button><button class="story-tap next" data-action="story-next" aria-label="다음 스토리"></button><div class="story-foot">메세지 보내기</div>
       </section></div>`;document.body.classList.add('modal-open');handleMissingImages(overlayRoot);startStoryTimer();}
