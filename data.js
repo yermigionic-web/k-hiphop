@@ -14,7 +14,7 @@ window.KHIPHOP_DATA = {
       stories: 2,
       feedImage: 'assets/karylgram/sl00z-poster.png',
       avatarImage: 'assets/karylgram/profile/sl00z-profile-picture.png',
-      artistImage: null,
+      artistImage: 'assets/music/profile/sl00z-music-profile.png',
       storyImages: ["assets/karylgram/stories/sl00z-stories-01.png","assets/karylgram/stories/sl00z-stories-02.png"],
       tracks: [
         { title: 'STATIC IN THE JAW', file: 'music/SL00Z/STATIC IN THE JAW - SL00Z.mp3', album: 'ROOM TEMPERATURE' },
@@ -30,7 +30,7 @@ window.KHIPHOP_DATA = {
       stories: 1,
       feedImage: 'assets/karylgram/kaykayo-poster.png',
       avatarImage: 'assets/karylgram/profile/kaykayo-profile-picture.png',
-      artistImage: null,
+      artistImage: 'assets/music/profile/kaykayo-music-profile.png',
       storyImages: ["assets/karylgram/stories/kaykayo-stories-01.png"],
       tracks: [
         { title: 'DELLY', file: 'music/KAY KAYO/DELLY - KAY KAYO.mp3', album: 'AFRO-KOREAN' },
@@ -46,7 +46,7 @@ window.KHIPHOP_DATA = {
       stories: 2,
       feedImage: 'assets/karylgram/jae-one-poster.png',
       avatarImage: 'assets/karylgram/profile/jae-one-profile-picture.png',
-      artistImage: null,
+      artistImage: 'assets/music/profile/jae-one-music-profile.png',
       storyImages: ["assets/karylgram/stories/jae-one-stories-01.png","assets/karylgram/stories/jae-one-stories-02.png"],
       tracks: [
         { title: '27신촌', file: 'music/JAE-ONE/27신촌 - JAE-ONE.mp3', album: 'Re.08신촌 - EP' },
@@ -62,7 +62,7 @@ window.KHIPHOP_DATA = {
       stories: 9,
       feedImage: 'assets/karylgram/janedoe_poster.png',
       avatarImage: 'assets/karylgram/profile/janedoe-profile-picture.png',
-      artistImage: null,
+      artistImage: 'assets/music/profile/janedoe-music-profile.png',
       storyImages: ["assets/karylgram/stories/janedoe-stories-01.png","assets/karylgram/stories/janedoe-stories-02.png","assets/karylgram/stories/janedoe-stories-03.png",null,"assets/karylgram/stories/janedoe-stories-05.png","assets/karylgram/stories/janedoe-stories-06.png","assets/karylgram/stories/janedoe-stories-07.png","assets/karylgram/stories/janedoe-stories-08.png","assets/karylgram/stories/janedoe-stories-09.png"],
       tracks: [
         { title: 'FUCK UR CO-SIGN', file: 'music/Jane Doe/FUCK UR CO-SIGN - Jane Doe.mp3', explicit: true, album: 'FUCK UR CO-SIGN - Single' },
@@ -78,7 +78,7 @@ window.KHIPHOP_DATA = {
       stories: 5,
       feedImage: 'assets/karylgram/lilsoda_poster.png',
       avatarImage: 'assets/karylgram/profile/lilsoda-profile-picture.png',
-      artistImage: null,
+      artistImage: 'assets/music/profile/lilsoda-music-profile.png',
       storyImages: ["assets/karylgram/stories/lilsoda-stories-01.png","assets/karylgram/stories/lilsoda-stories-02.png","assets/karylgram/stories/lilsoda-stories-03.png","assets/karylgram/stories/lilsoda-stories-04.png","assets/karylgram/stories/lilsoda-stories-05.png"],
       tracks: [
         { title: '수면제', file: 'music/Lil Soda/수면제 - Lil Soda.mp3', album: '수면제 - Single' },
@@ -94,7 +94,7 @@ window.KHIPHOP_DATA = {
       stories: 3,
       feedImage: 'assets/karylgram/nafi-poster.png',
       avatarImage: 'assets/karylgram/profile/nafi-profile-picture.png',
-      artistImage: null,
+      artistImage: 'assets/music/profile/nafi-music-profile.png',
       storyImages: ["assets/karylgram/stories/nafi-stories-01.png","assets/karylgram/stories/nafi-stories-02.png","assets/karylgram/stories/nafi-stories-03.png"],
       tracks: [
         { title: 'I am Technology', file: 'music/NAFI/I am Technology - NAFI.mp3', album: 'IT-F-TAX' },
@@ -110,7 +110,7 @@ window.KHIPHOP_DATA = {
       stories: 0,
       feedImage: 'assets/karylgram/youngerror-poster.png',
       avatarImage: 'assets/karylgram/profile/youngerror-profile-picture.png',
-      artistImage: null,
+      artistImage: 'assets/music/profile/youngerror-music-profile.png',
       storyImages: [],
       tracks: [
         { title: '404 BRAT', file: 'music/Young ERROR/404 BRAT - Young ERROR.mp3', album: '00 ERRORCODE - EP' },
