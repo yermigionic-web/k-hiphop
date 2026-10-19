@@ -39,7 +39,7 @@
     chevronLeft:'<path d="m15 18-6-6 6-6"/>', chevronRight:'<path d="m9 18 6-6-6-6"/>',
     close:'<path d="m18 6-12 12M6 6l12 12"/>',
     play:'<path d="m8 5 11 7-11 7Z"/>', pause:'<rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/>',
-    skip:'<path d="m5 4 10 8-10 8Z"/><path d="M19 5v14"/>', back:'<path d="m19 12-11 0M13 7l-5 5 5 5"/>',
+    skip:'<path d="m5 4 10 8-10 8Z"/><path d="M19 5v14"/>', previous:'<path d="m19 4-10 8 10 8Z"/><path d="M5 5v14"/>', repeatOne:'<path d="m17 2 4 4-4 4M3 11V9a3 3 0 0 1 3-3h15M7 22l-4-4 4-4m14-1v2a3 3 0 0 1-3 3H3"/><path d="M12 12v5m-1-4 1-1"/>', back:'<path d="m19 12-11 0M13 7l-5 5 5 5"/>',
     music:'<path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>',
     add:'<path d="M12 5v14m-7-7h14"/>', at:'<circle cx="12" cy="12" r="4"/><path d="M16 8v4c0 2 3 2 3 0a7 7 0 1 0-3 6"/>',
     verified:'<path d="m9 12 2 2 4-4"/><path d="M12 2l2.2 2 3-.1.8 2.8 2.5 1.6-.8 3 1 3-2.8 1.4-.8 2.8-3-.1-2.1 2-2.2-2-3 .1-.8-2.8-2.5-1.6.8-3-1-3L6 6.8l.8-2.8 3 .1Z"/>',
@@ -51,7 +51,7 @@
 
   let slideIndex = 0, like = false, saved = false;
   let current = null;
-  let lyricsOpen = false;
+  let lyricsOpen = false, playerView = 'lyrics', repeatOne = false;
   let story = null;
   let storyTimer = null, storyProgress = 0, storyPaused = false;
   let toastTimer = null;
@@ -274,27 +274,56 @@
   async function safePlay(){try{await audio.play()}catch(err){if(err.name!=='AbortError')toast('재생하려면 재생 버튼을 다시 눌러 주세요.');}renderPlayer();}
   function togglePlay(){if(!current)return;if(audio.paused)safePlay();else audio.pause();}
   function skipNext(){const info=activeInfo();if(!info)return;const list=info.a.tracks.map((t,i)=>({t,i})).filter(v=>v.t.file);const n=list.findIndex(v=>v.i===current.trackIndex);const next=list[(n+1)%list.length];if(next)playTrack(info.a.id,next.i);}
+  function skipPrevious(){
+    const info=activeInfo();if(!info)return;
+    if(audio.currentTime>3){audio.currentTime=0;updatePlayerProgress();return;}
+    const list=info.a.tracks.map((t,i)=>({t,i})).filter(v=>v.t.file);
+    const n=list.findIndex(v=>v.i===current.trackIndex),prev=list[(n-1+list.length)%list.length];
+    if(prev)playTrack(info.a.id,prev.i);
+  }
+  function toggleRepeatOne(){
+    repeatOne=!repeatOne;
+    audio.loop=repeatOne;
+    const btn=overlayRoot.querySelector('[data-action="repeat-one"]');
+    if(btn){
+      btn.classList.toggle('is-active',repeatOne);
+      btn.setAttribute('aria-pressed',String(repeatOne));
+      btn.setAttribute('aria-label',repeatOne?'한 곡 반복 끄기':'한 곡 반복 켜기');
+    }
+  }
+  function setPlayerView(view){
+    playerView=view;
+    const sheet=overlayRoot.querySelector('.lyrics-sheet');if(!sheet)return;
+    sheet.classList.toggle('is-album-view',view==='art');
+    const label=sheet.querySelector('#player-view-label');
+    if(label)label.textContent=view==='art'?'NOW PLAYING · ALBUM':'NOW PLAYING · LYRICS';
+  }
   function renderPlayer(){
     const inf=activeInfo();if(!inf){playerRoot.innerHTML='';return;}
     const {a,t}=inf;playerRoot.innerHTML=`<div class="mini-player" style="${cssColor(a)}"><div class="mini-progress" style="width:${audio.duration?Math.min(100,100*audio.currentTime/audio.duration):0}%"></div><div class="mini-art">${esc(a.name.slice(0,2).toUpperCase())}${t.cover?img(t.cover,`${t.title} 앨범 커버`):''}</div><button class="mini-info" data-action="lyrics-open" aria-label="${esc(t.title)} 가사 화면 열기"><strong>${esc(t.title)}</strong><span>${esc(a.name)} · 가사 보기</span></button><div class="mini-controls"><button class="mini-control play" data-action="play-toggle" aria-label="${audio.paused?'재생':'일시정지'}">${ico(audio.paused?'play':'pause',28,true)}</button><button class="mini-control" data-action="next-track" aria-label="다음 곡">${ico('skip',21,true)}</button></div></div>`;
   }
-  function updatePlayerProgress(){const line=document.querySelector('.mini-progress');if(line)line.style.width=(audio.duration?Math.min(100,100*audio.currentTime/audio.duration):0)+'%';const seek=document.querySelector('#lyrics-seek');if(seek){seek.max=String(Number.isFinite(audio.duration)?audio.duration:100);seek.value=String(audio.currentTime||0);}const p=document.querySelector('#time-now');if(p)p.textContent=moneyTime(audio.currentTime);const q=document.querySelector('#time-rest');if(q)q.textContent='-'+moneyTime(Math.max(0,(audio.duration||0)-audio.currentTime));updateLyricsActive();}
+  function updatePlayerProgress(){const line=document.querySelector('.mini-progress');if(line)line.style.width=(audio.duration?Math.min(100,100*audio.currentTime/audio.duration):0)+'%';const seek=document.querySelector('#lyrics-seek');if(seek){seek.max=String(Number.isFinite(audio.duration)?audio.duration:100);seek.value=String(audio.currentTime||0);seek.style.setProperty('--seek-progress',(audio.duration?Math.max(0,Math.min(100,100*audio.currentTime/audio.duration)):0)+'%');}const p=document.querySelector('#time-now');if(p)p.textContent=moneyTime(audio.currentTime);const q=document.querySelector('#time-rest');if(q)q.textContent='-'+moneyTime(Math.max(0,(audio.duration||0)-audio.currentTime));updateLyricsActive();}
   function lyricsLines(t){return Array.isArray(t.lyrics)?t.lyrics.map(l=>typeof l==='string'?{time:null,text:l}:l).filter(l=>l&&typeof l.text==='string'&&l.text.length>0):[];}
   function renderLyrics(){
     if(!lyricsOpen)return;const inf=activeInfo();if(!inf){closeOverlay();return;}
     const {a,t}=inf;const lines=lyricsLines(t);const synced=lines.some(line=>typeof line.time==="number"&&Number.isFinite(line.time));currentLyric=-1;
-    overlayRoot.innerHTML=`<div class="overlay" data-overlay="lyrics"><section class="lyrics-sheet${t.cover?' has-art':''}" style="${cssColor(a)}" role="dialog" aria-modal="true" aria-label="${esc(t.title)} 가사">
+    overlayRoot.innerHTML=`<div class="overlay" data-overlay="lyrics"><section class="lyrics-sheet${t.cover?' has-art':''}${playerView==='art'?' is-album-view':''}" style="${cssColor(a)}" role="dialog" aria-modal="true" aria-label="${esc(t.title)} 재생창">
        ${t.cover?`<div class="lyrics-art-bg" aria-hidden="true">${img(t.cover,'')}</div>`:''}
-       <header class="lyrics-header"><button class="close" data-action="lyrics-close" aria-label="가사 닫기">${ico('chevronLeft',23)}</button><div class="lyrics-label">NOW PLAYING · LYRICS</div><button class="close" data-action="lyrics-close" aria-label="닫기">${ico('close',19)}</button></header>
+       <header class="lyrics-header"><button class="close" data-action="lyrics-close" aria-label="가사 닫기">${ico('chevronLeft',23)}</button><div class="lyrics-label" id="player-view-label">${playerView==='art'?'NOW PLAYING · ALBUM':'NOW PLAYING · LYRICS'}</div><button class="close" data-action="lyrics-close" aria-label="닫기">${ico('close',19)}</button></header>
        <div class="lyrics-lines ${synced?'is-synced':'is-unsynced'}" id="lyrics-lines">${lines.length?lines.map((line,i)=>`<div class="lyric-line${line.text.trim()===''?' is-break':''}" data-line="${i}">${esc(line.text)}</div>`).join(''):`<div class="lyrics-empty"><div class="empty-kicker">THE WORDS WILL FOLLOW</div><h2>${esc(t.title)}</h2><p>아직 가사가 등록되지 않았어요.<br />추후 data.js의 해당 곡에 lyrics를 입력하면<br />이 공간에 가사가 표시됩니다.</p></div>`}</div>
-       <div class="lyrics-ctrl"><div class="full-track"><div class="full-art">${esc(a.name.slice(0,2).toUpperCase())}${t.cover?img(t.cover,`${t.title} 앨범 커버`):''}</div><div><strong>${esc(t.title)}</strong><span>${esc(a.name)} · ${esc(t.album)}</span></div></div>
+       <div class="album-feature" aria-label="앨범아트 보기">
+         <button class="album-cover-large" type="button" data-action="player-lyrics" aria-label="앨범아트를 닫고 가사 보기">${t.cover?img(t.cover,`${t.title} 앨범 커버`):esc(a.name.slice(0,2).toUpperCase())}</button>
+         <div class="album-feature-meta"><strong>${esc(t.title)}</strong><span>${esc(a.name)}</span></div>
+         <button class="album-to-lyrics" type="button" data-action="player-lyrics">${ico('music',18)} 가사 보기</button>
+       </div>
+       <div class="lyrics-ctrl"><div class="full-track"><button class="full-art" type="button" data-action="player-art" aria-label="앨범아트 크게 보기">${esc(a.name.slice(0,2).toUpperCase())}${t.cover?img(t.cover,`${t.title} 앨범 커버`):''}</button><div><strong>${esc(t.title)}</strong><span>${esc(a.name)} · ${esc(t.album)}</span></div></div>
        <input id="lyrics-seek" class="seek-range" type="range" min="0" max="${Number.isFinite(audio.duration)?audio.duration:100}" value="${audio.currentTime||0}" step="0.1" aria-label="재생 위치" /><div class="time-pair"><span id="time-now">${moneyTime(audio.currentTime)}</span><span id="time-rest">-${moneyTime(Math.max(0,(audio.duration||0)-audio.currentTime))}</span></div>
-       <div class="full-controls"><button class="full-control" data-action="lyrics-close" aria-label="플레이어 닫기">${ico('chevronLeft',26)}</button><button class="full-control play" data-action="play-toggle" aria-label="재생·일시정지">${ico(audio.paused?'play':'pause',28,true)}</button><button class="full-control" data-action="next-track" aria-label="다음 노래">${ico('skip',26,true)}</button></div></div>
+       <div class="full-controls"><button class="full-control previous" data-action="previous-track" aria-label="현재 곡 처음부터 또는 이전 곡">${ico('previous',28,true)}</button><button class="full-control play" data-action="play-toggle" aria-label="재생·일시정지">${ico(audio.paused?'play':'pause',28,true)}</button><button class="full-control next" data-action="next-track" aria-label="다음 곡">${ico('skip',28,true)}</button><button class="full-control repeat-one${repeatOne?' is-active':''}" data-action="repeat-one" aria-label="${repeatOne?'한 곡 반복 끄기':'한 곡 반복 켜기'}" aria-pressed="${repeatOne}">${ico('repeatOne',24)}</button></div></div>
       </section></div>`;
     document.body.classList.add('modal-open');updatePlayerProgress();
   }
   function updateLyricsActive(){if(!lyricsOpen)return;const inf=activeInfo();if(!inf)return;const lines=lyricsLines(inf.t);if(!lines.length||!lines.some(l=>typeof l.time==='number'&&Number.isFinite(l.time)))return;let index=-1;for(let i=0;i<lines.length;i++)if((Number(lines[i].time)||0)<=audio.currentTime)index=i;if(index===currentLyric)return;currentLyric=index;const nodes=document.querySelectorAll('.lyric-line');nodes.forEach((el,i)=>el.classList.toggle('active',i===index));if(index>=0)nodes[index]?.scrollIntoView({block:'center',behavior:'smooth'});}
-  function closeOverlay(){lyricsOpen=false;story=null;stopStoryTimer();overlayRoot.innerHTML='';document.body.classList.remove('modal-open');}
+  function closeOverlay(){lyricsOpen=false;playerView='lyrics';story=null;stopStoryTimer();overlayRoot.innerHTML='';document.body.classList.remove('modal-open');}
 
   
   function storyArtists(){return artists.filter(a=>a.stories>0);}
@@ -349,14 +378,18 @@
       case 'play-track':playTrack(el.dataset.artist,Number(el.dataset.track));break;
       case 'play-toggle':togglePlay();break;
       case 'next-track':skipNext();break;
-      case 'lyrics-open':story=null;stopStoryTimer();lyricsOpen=true;renderLyrics();break;
+      case 'previous-track':skipPrevious();break;
+      case 'repeat-one':toggleRepeatOne();break;
+      case 'player-art':setPlayerView('art');break;
+      case 'player-lyrics':setPlayerView('lyrics');break;
+      case 'lyrics-open':story=null;stopStoryTimer();playerView='lyrics';lyricsOpen=true;renderLyrics();break;
       case 'lyrics-close':closeOverlay();break;
     }
   });
   overlayRoot.addEventListener('pointerdown',e=>{if(story&&e.target.closest('.story-sheet'))storyPaused=true;});
   overlayRoot.addEventListener('pointerup',()=>{storyPaused=false;});
   overlayRoot.addEventListener('pointercancel',()=>{storyPaused=false;});
-  overlayRoot.addEventListener('input',e=>{if(e.target.id==='lyrics-seek'&&Number.isFinite(audio.duration))audio.currentTime=Number(e.target.value);});
+  overlayRoot.addEventListener('input',e=>{if(e.target.id==='lyrics-seek'&&Number.isFinite(audio.duration)){audio.currentTime=Number(e.target.value);updatePlayerProgress();}});
   document.addEventListener('keydown',e=>{
     if(e.key==='Escape'&&(story||lyricsOpen)){e.preventDefault();closeOverlay();return;}
     if(e.key==='ArrowRight'&&story){e.preventDefault();nextStory(1);return;}
@@ -368,7 +401,7 @@
   audio.addEventListener('loadedmetadata',updatePlayerProgress);
   audio.addEventListener('play',()=>{renderPlayer();const b=document.querySelector('.full-control.play');if(b)b.innerHTML=ico('pause',28,true);});
   audio.addEventListener('pause',()=>{renderPlayer();const b=document.querySelector('.full-control.play');if(b)b.innerHTML=ico('play',28,true);});
-  audio.addEventListener('ended',skipNext);
+  audio.addEventListener('ended',()=>{if(!repeatOne)skipNext();});
   audio.addEventListener('error',()=>{if(current)toast('음원 파일을 불러올 수 없어요. 저장소의 파일 경로를 확인해 주세요.');});
   warmSiteImages();
   if ('serviceWorker' in navigator) {
