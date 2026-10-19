@@ -17,7 +17,7 @@ window.KHIPHOP_DATA = {
       artistImage: 'assets/music/profile/sl00z-music-profile.png',
       storyImages: ["assets/karylgram/stories/sl00z-stories-01.png","assets/karylgram/stories/sl00z-stories-02.png"],
       tracks: [
-        { title: 'STATIC IN THE JAW', file: 'music/SL00Z/STATIC IN THE JAW - SL00Z.mp3', album: 'ROOM TEMPERATURE' },
+        { title: 'STATIC IN THE JAW', file: 'music/SL00Z/STATIC IN THE JAW - SL00Z.mp3', album: 'ROOM TEMPERATURE', cover: 'assets/music/album-cover/static-in-the-jaw-cover.png' },
         { title: '배기', file: 'music/SL00Z/배기 - SL00Z.mp3', album: '저화질도시 (Prod. Ill Bass)' },
         { title: '잠수', file: 'music/SL00Z/잠수 - SL00Z.mp3', album: '잠수 - Single' }
       ],
@@ -34,7 +34,7 @@ window.KHIPHOP_DATA = {
       storyImages: ["assets/karylgram/stories/kaykayo-stories-01.png"],
       tracks: [
         { title: 'DELLY', file: 'music/KAY KAYO/DELLY - KAY KAYO.mp3', album: 'AFRO-KOREAN' },
-        { title: 'ODOGWU', file: 'music/KAY KAYO/ODOGWU - KAY KAYO.mp3', album: 'XXXAYO' },
+        { title: 'ODOGWU', file: 'music/KAY KAYO/ODOGWU - KAY KAYO.mp3', album: 'XXXAYO', cover: 'assets/music/album-cover/odogwu-cover.png' },
         { title: 'Viper', file: 'music/KAY KAYO/Viper - KAY KAYO.mp3', album: 'KAYO Mixtape - EP' }
       ],
       similar: [{ name: 'PENOMECO', url: 'https://www.youtube.com/@PENOMECO' }, { name: 'Burna Boy', url: 'https://www.youtube.com/@BurnaBoy' }]
@@ -51,7 +51,7 @@ window.KHIPHOP_DATA = {
       tracks: [
         { title: '27신촌', file: 'music/JAE-ONE/27신촌 - JAE-ONE.mp3', album: 'Re.08신촌 - EP' },
         { title: 'BOSS THANG', file: 'music/JAE-ONE/BOSS THANG - JAE-ONE.mp3', album: 'Boss Thang - Single' },
-        { title: 'FOUNDATION', file: 'music/JAE-ONE/FOUNDATION - JAE-ONE.mp3', album: 'GROUNDWORK (feat. EASY MESS)' }
+        { title: 'FOUNDATION', file: 'music/JAE-ONE/FOUNDATION - JAE-ONE.mp3', album: 'GROUNDWORK (feat. EASY MESS)', cover: 'assets/music/album-cover/foundation-cover.png' }
       ],
       similar: [{ name: 'E SENS', url: 'https://www.youtube.com/@esensofficial0209' }, { name: 'Paloalto', url: 'https://www.youtube.com/@paloaltongue' }]
     },
@@ -66,7 +66,7 @@ window.KHIPHOP_DATA = {
       storyImages: ["assets/karylgram/stories/janedoe-stories-01.png","assets/karylgram/stories/janedoe-stories-02.png","assets/karylgram/stories/janedoe-stories-03.png",null,"assets/karylgram/stories/janedoe-stories-05.png","assets/karylgram/stories/janedoe-stories-06.png","assets/karylgram/stories/janedoe-stories-07.png","assets/karylgram/stories/janedoe-stories-08.png","assets/karylgram/stories/janedoe-stories-09.png"],
       tracks: [
         { title: 'FUCK UR CO-SIGN', file: 'music/Jane Doe/FUCK UR CO-SIGN - Jane Doe.mp3', explicit: true, album: 'FUCK UR CO-SIGN - Single' },
-        { title: '개싸움 (Gasoline)', file: 'music/Jane Doe/개싸움 (Gasoline) - Jane Doe.mp3', explicit: true, album: 'JANE DOE' },
+        { title: '개싸움 (Gasoline)', file: 'music/Jane Doe/개싸움 (Gasoline) - Jane Doe.mp3', explicit: true, album: 'JANE DOE', cover: 'assets/music/album-cover/개싸움(gasoline)-cover.png' },
         { title: '먹이사슬', file: 'music/Jane Doe/먹이사슬 - Jane Doe.mp3', explicit: true, album: 'PROFANITY' }
       ],
       similar: [{ name: 'JUSTHIS', url: 'https://www.youtube.com/@THISISJUSTHIS' }, { name: 'NO:EL', url: 'https://www.youtube.com/@noel_officialchannel' }]
@@ -82,7 +82,7 @@ window.KHIPHOP_DATA = {
       storyImages: ["assets/karylgram/stories/lilsoda-stories-01.png","assets/karylgram/stories/lilsoda-stories-02.png","assets/karylgram/stories/lilsoda-stories-03.png","assets/karylgram/stories/lilsoda-stories-04.png","assets/karylgram/stories/lilsoda-stories-05.png"],
       tracks: [
         { title: '수면제', file: 'music/Lil Soda/수면제 - Lil Soda.mp3', album: '수면제 - Single' },
-        { title: '푸른봄은썩었어', file: 'music/Lil Soda/푸른봄은썩었어 - Lil Soda.mp3', album: 'BLUE_OVERDOSE - EP' },
+        { title: '푸른봄은썩었어', file: 'music/Lil Soda/푸른봄은썩었어 - Lil Soda.mp3', album: 'BLUE_OVERDOSE - EP', cover: 'assets/music/album-cover/푸른봄은썩었어-cover.png' },
         { title: '새까만계이름', file: 'music/Lil Soda/새까만계이름 - Lil Soda.mp3', explicit: true, album: '새까만계이름 - Single' }
       ],
       similar: [{ name: 'YANGHONGONE', url: 'https://www.youtube.com/channel/UCO4p2LbFEEF1HKm4HnUVjfg' }, { name: 'Scails', url: 'https://www.youtube.com/@xscails' }]
@@ -98,7 +98,7 @@ window.KHIPHOP_DATA = {
       storyImages: ["assets/karylgram/stories/nafi-stories-01.png","assets/karylgram/stories/nafi-stories-02.png","assets/karylgram/stories/nafi-stories-03.png"],
       tracks: [
         { title: 'I am Technology', file: 'music/NAFI/I am Technology - NAFI.mp3', album: 'IT-F-TAX' },
-        { title: 'Silk Guillotine', file: 'music/NAFI/Silk Guillotine - NAFI.mp3', album: 'FACETIME' },
+        { title: 'Silk Guillotine', file: 'music/NAFI/Silk Guillotine - NAFI.mp3', album: 'FACETIME', cover: 'assets/music/album-cover/silk-gillotine-cover.png' },
         { title: 'PANDUN (판돈)', file: 'music/NAFI/PANDUN (판돈) - NAFI.mp3', album: 'Nafiture - EP' }
       ],
       similar: [{ name: 'BIBI', url: 'https://www.youtube.com/@naked_BIBI' }, { name: 'DEAN', url: 'https://www.youtube.com/@DEANTRBL' }]
@@ -115,7 +115,7 @@ window.KHIPHOP_DATA = {
       tracks: [
         { title: '404 BRAT', file: 'music/Young ERROR/404 BRAT - Young ERROR.mp3', album: '00 ERRORCODE - EP' },
         { title: 'Cred Pass!', file: 'music/Young ERROR/Cred Pass! - Young ERROR.mp3', album: 'FILE STACKING UP (feat. FILEBREEDS) - EP' },
-        { title: 'FACE ID', file: 'music/Young ERROR/FACE ID - Young ERROR.mp3', album: 'FACE ID - Single' }
+        { title: 'FACE ID', file: 'music/Young ERROR/FACE ID - Young ERROR.mp3', album: 'FACE ID - Single', cover: 'assets/music/album-cover/face-id-cover.png' }
       ],
       similar: [{ name: 'NOWIMYOUNG', url: 'https://www.youtube.com/@nowimyoung' }, { name: 'Effie', url: 'https://www.youtube.com/@effi3e' }]
     }

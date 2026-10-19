@@ -151,3 +151,14 @@
 
 .post-media .carousel-track,.post-media .carousel-panel,.post-media .visual-asset{touch-action:pan-y}
 .post-media img{-webkit-user-drag:none;user-select:none}
+
+.mini-art,.full-art{position:relative;overflow:hidden}
+.mini-art img,.full-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
+.lyrics-sheet.has-art{background:#101016;isolation:isolate}
+.lyrics-sheet.has-art .lyrics-art-bg{position:absolute;inset:-80px;z-index:0;overflow:hidden;pointer-events:none}
+.lyrics-sheet.has-art .lyrics-art-bg img{display:block;width:100%;height:100%;object-fit:cover;filter:blur(68px) saturate(.85) brightness(.75);transform:scale(1.12)}
+.lyrics-sheet.has-art:before{z-index:1;background:linear-gradient(180deg,rgba(3,5,10,.65) 0%,rgba(3,5,10,.68) 48%,rgba(3,5,10,.86) 100%)}
+.lyrics-sheet.has-art .lyrics-header,.lyrics-sheet.has-art .lyrics-lines,.lyrics-sheet.has-art .lyrics-ctrl{z-index:2}
+.lyrics-sheet.has-art .lyric-line{color:rgba(255,255,255,.97);text-shadow:0 2px 9px rgba(0,0,0,.65)}
+.lyrics-sheet.has-art .lyric-line.active{color:#fff}
+.lyrics-sheet.has-art .lyrics-empty,.lyrics-sheet.has-art .full-track{color:#fff}
