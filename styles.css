@@ -148,3 +148,6 @@
 .story-editorial.music{display:flex;align-items:center;gap:11px;min-width:min(79%,310px);padding:13px 16px;border-radius:15px;background:#ece8eae8;color:#202027;box-shadow:0 7px 24px #0007;text-shadow:none;text-align:left}
 .story-music-icon{height:43px;width:43px;border-radius:9px;background:linear-gradient(135deg,#343341,#988ca3);color:white;display:grid;place-items:center;flex:none;font-size:24px}.story-music-copy{display:flex;flex-direction:column;min-width:0}.story-music-copy strong{font-size:16px}.story-music-copy small{font-size:12px;font-weight:500;line-height:1.4}
 .story-plain-black{position:absolute;inset:0;background:#08080a;color:#fff;display:flex;justify-content:center;align-items:center;text-align:center;font-size:clamp(24px,7vw,38px);font-weight:750;letter-spacing:-.045em;z-index:2}.story-plain-black span{padding:0 24px}
+
+.post-media .carousel-track,.post-media .carousel-panel,.post-media .visual-asset{touch-action:pan-y}
+.post-media img{-webkit-user-drag:none;user-select:none}
